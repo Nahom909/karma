@@ -1,0 +1,42 @@
+# Karma Specialty Coffee · Server-Einstellungen für Apache (IONOS, Strato, all-inkl u. a.)
+
+# Dateitypen
+AddType font/woff2 .woff2
+AddType image/webp .webp
+AddType application/json .json
+
+# Kompression (Texte, Skripte, Styles)
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript text/javascript application/json image/svg+xml text/plain
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml text/plain
+</IfModule>
+
+# Browser-Cache: Bilder, Schriften und Skripte lange; Texte (content.json) und HTML immer frisch
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 7 days"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+# Sicherheit und Datenschutz: Die Seite darf nur Dateien vom eigenen Server laden
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+# Arbeitsdateien nicht ausliefern
+<FilesMatch "\.(md|mjs|py|sh)$">
+  Require all denied
+</FilesMatch>

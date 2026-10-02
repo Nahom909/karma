@@ -1,0 +1,232 @@
+{
+  "_anleitung": "Alle Texte, Preise und Öffnungszeiten der Website stehen in dieser Datei. Nur den Text zwischen den Anführungszeichen rechts vom Doppelpunkt ändern. Mehr dazu in LIES-MICH.md.",
+  "cafe": {
+    "name": "Karma Specialty Coffee",
+    "kurzname": "Karma",
+    "slogan_auf_becher": "This is your Karma",
+    "strasse": "Bahnstraße 4",
+    "plz": "63225",
+    "ort": "Langen (Hessen)",
+    "instagram_name": "@yourkarmacoffee",
+    "instagram_link": "https://www.instagram.com/yourkarmacoffee/",
+    "route_link": "https://www.google.com/maps/search/?api=1&query=Karma+Specialty+Coffee+Bahnstra%C3%9Fe+4+63225+Langen",
+    "google_sterne": "4,4",
+    "google_anzahl_bewertungen": "103",
+    "google_link": "https://www.google.com/maps/search/?api=1&query=Karma+Specialty+Coffee+Bahnstra%C3%9Fe+4+63225+Langen"
+  },
+  "seo": {
+    "seitentitel": "Karma Specialty Coffee · Açaí, Matcha & Kaffee in Langen",
+    "beschreibung": "Açaí Cups, Iced Matcha und Specialty Coffee in der Bahnstraße 4 in Langen (Hessen). Täglich von 9 bis 19 Uhr geöffnet."
+  },
+  "navigation": {
+    "sorten": "Signature Cups",
+    "matcha": "Matcha",
+    "karte": "Karte",
+    "besuch": "Besuch",
+    "heute_offen": "Heute geöffnet",
+    "heute_zu": "Gerade geschlossen",
+    "bis": "bis",
+    "ab": "ab",
+    "uhr": "Uhr"
+  },
+  "hero": {
+    "zeile_1": "Gutes",
+    "zeile_2": "Karma.",
+    "unterzeile": "Frisch gemixt.",
+    "claim": "Açaí, Matcha & Specialty Coffee mitten in Langen.",
+    "bewertung_text": "Google-Bewertungen",
+    "scroll_hinweis": "Scrollen",
+    "siegel_text": "GOOD KARMA · SPECIALTY COFFEE · LANGEN · ",
+    "bild": "assets/render/classic/final.webp",
+    "bild_beschreibung": "Classic Açaí Cup im durchsichtigen Karma-Becher mit cremigem Bananen-Swirl, belegt mit Erdbeere, Banane und Granola"
+  },
+  "signature": {
+    "titel": "Signature Cups",
+    "einleitung": "Vier Becher, die bei uns am häufigsten über den Tresen gehen. Gefrorenes Açaí, frisch geschichtet, oben drauf das gute Zeug.",
+    "groesse": "0,4 l",
+    "zutaten_titel": "Drin & drauf",
+    "sorten": [
+      {
+        "id": "classic",
+        "nummer": "01",
+        "name": "Classic",
+        "kursiv": "Classic",
+        "untertitel": "Der, mit dem alles anfängt.",
+        "beschreibung": "Cremiges Açaí mit Bananen-Swirl, oben frische Erdbeeren, Banane und knuspriges Granola.",
+        "zutaten": ["Açaí", "Banane", "Erdbeere", "Granola"],
+        "preis": "7,90 €",
+        "bild": "assets/render/classic/final.webp",
+        "bild_beschreibung": "Classic Açaí Cup mit Bananen-Swirl, Erdbeere, Banane und Granola"
+      },
+      {
+        "id": "tropical",
+        "nummer": "02",
+        "name": "Tropical",
+        "kursiv": "Tropical",
+        "untertitel": "Sommer, das ganze Jahr.",
+        "beschreibung": "Açaí trifft Mango-Swirl. Oben reife Mango, Ananas und Kokosraspeln.",
+        "zutaten": ["Açaí", "Mango", "Ananas", "Kokosraspeln"],
+        "preis": "8,40 €",
+        "bild": "assets/render/tropical/final.webp",
+        "bild_beschreibung": "Tropical Açaí Cup mit Mango-Swirl, Mangowürfeln, Ananas und Kokosraspeln"
+      },
+      {
+        "id": "peanut",
+        "nummer": "03",
+        "name": "Peanut Power",
+        "kursiv": "Power",
+        "untertitel": "Für lange Tage.",
+        "beschreibung": "Açaí, eine Schicht Erdnussbutter und Chiapudding. Oben Blaubeeren, Erdbeeren, Kakao-Nibs und noch mehr Erdnussbutter.",
+        "zutaten": ["Açaí", "Erdnussbutter", "Chiapudding", "Blaubeeren", "Kakao-Nibs"],
+        "preis": "8,90 €",
+        "bild": "assets/render/peanut/final.webp",
+        "bild_beschreibung": "Peanut Power Cup mit Schichten aus Açaí, Erdnussbutter und Chiapudding, Erdnussbutter läuft außen am Becher herunter"
+      },
+      {
+        "id": "berry",
+        "nummer": "04",
+        "name": "Berry Blast",
+        "kursiv": "Blast",
+        "untertitel": "Alle Beeren, keine Kompromisse.",
+        "beschreibung": "Açaí mit Kokos-Joghurt-Swirl, getoppt mit Blaubeeren, Himbeeren, Erdbeere und Kokoschips.",
+        "zutaten": ["Açaí", "Kokos-Joghurt", "Blaubeeren", "Himbeeren", "Erdbeere"],
+        "preis": "8,40 €",
+        "bild": "assets/render/berry/final.webp",
+        "bild_beschreibung": "Berry Blast Cup mit weißem Kokos-Joghurt-Swirl, Blaubeeren, Himbeeren und Erdbeere"
+      }
+    ]
+  },
+  "matcha": {
+    "kicker": "Und dann: Matcha",
+    "titel": "Iced Strawberry Matcha",
+    "kursiv": "Matcha",
+    "beschreibung": "Drei Schichten, die man sieht, bevor man sie schmeckt. Erst Erdbeere, dann Milch, oben Matcha. Umrühren oder Schicht für Schicht trinken.",
+    "schichten": [
+      { "nummer": "01", "name": "Erdbeerpüree", "text": "Frische Erdbeeren, leicht gesüßt" },
+      { "nummer": "02", "name": "Milch nach Wahl", "text": "Kuh, Hafer oder Mandel" },
+      { "nummer": "03", "name": "Ceremonial Matcha", "text": "Aufgeschlagen, nicht gerührt" }
+    ],
+    "preis": "5,90 €",
+    "bild": "assets/render/matcha/final.webp",
+    "bild_beschreibung": "Iced Strawberry Matcha mit roter Erdbeerschicht, weißer Milch und grünem Matcha, mit Eiswürfeln"
+  },
+  "impressionen": {
+    "titel": "Impressionen",
+    "text": "So sieht es bei uns aus, ganz ohne 3D.",
+    "instagram_text": "Mehr auf Instagram",
+    "bilder": [
+      { "bild": "assets/impressionen/karma-02-swirl-duo.webp", "format": "hoch", "bildunterschrift": "Swirl & Crunch", "beschreibung": "Zwei Açaí-Becher mit weißem Swirl, Beeren, Kokos und Mandelblättchen auf der Theke" },
+      { "bild": "assets/impressionen/karma-01-chia-layer.webp", "format": "hoch", "bildunterschrift": "Schicht für Schicht", "beschreibung": "Becher mit Açaí, Erdnussbutter und Chiapudding, belegt mit Beeren, Banane und Mandeln" },
+      { "bild": "assets/impressionen/karma-03-trio.webp", "format": "hoch", "bildunterschrift": "Frisch gemacht", "beschreibung": "Drei Açaí-Becher in einer Reihe mit Blaubeeren, Erdbeeren, Erdnussbutter und Kakao-Nibs" }
+    ]
+  },
+  "speisekarte": {
+    "titel": "Die Karte",
+    "einleitung": "Ein Auszug aus dem, was es bei uns gibt.",
+    "hinweis": "Beispielkarte: Auswahl und Preise sind beispielhaft und können vor Ort abweichen.",
+    "kategorien": [
+      {
+        "id": "bowls",
+        "name": "Açaí Bowls",
+        "eintraege": [
+          { "name": "Classic Bowl", "beschreibung": "Açaí, Banane, Erdbeere, Granola, Honig", "preis": "9,50 €", "bild": "assets/img/karte/bowl-classic.webp" },
+          { "name": "Tropical Bowl", "beschreibung": "Açaí, Mango, Ananas, Kokos, Maracuja", "preis": "9,90 €", "bild": "assets/img/karte/bowl-tropical.webp" },
+          { "name": "Protein Bowl", "beschreibung": "Açaí, Erdnussbutter, Banane, Kakao-Nibs, Proteingranola", "preis": "10,50 €", "bild": "assets/img/karte/bowl-protein.webp" }
+        ]
+      },
+      {
+        "id": "cups",
+        "name": "Açaí Cups",
+        "eintraege": [
+          { "name": "Classic", "beschreibung": "Açaí, Bananen-Swirl, Erdbeere, Banane, Granola", "preis": "7,90 €", "bild": "assets/img/karte/cup-classic.webp" },
+          { "name": "Tropical", "beschreibung": "Açaí, Mango-Swirl, Mango, Ananas, Kokos", "preis": "8,40 €", "bild": "assets/img/karte/cup-tropical.webp" },
+          { "name": "Peanut Power", "beschreibung": "Açaí, Erdnussbutter, Chiapudding, Beeren", "preis": "8,90 €", "bild": "assets/img/karte/cup-peanut.webp" },
+          { "name": "Berry Blast", "beschreibung": "Açaí, Kokos-Joghurt, Blaubeeren, Himbeeren", "preis": "8,40 €", "bild": "assets/img/karte/cup-berry.webp" }
+        ]
+      },
+      {
+        "id": "smoothies",
+        "name": "Smoothies",
+        "eintraege": [
+          { "name": "Green Glow", "beschreibung": "Spinat, Apfel, Banane, Ingwer, Limette", "preis": "6,50 €", "bild": "assets/img/karte/smoothie-green.webp" },
+          { "name": "Pink Karma", "beschreibung": "Erdbeere, Himbeere, Banane, Hafermilch", "preis": "6,50 €", "bild": "assets/img/karte/smoothie-pink.webp" },
+          { "name": "Mango Sunrise", "beschreibung": "Mango, Maracuja, Orange, Kokoswasser", "preis": "6,50 €", "bild": "assets/img/karte/smoothie-mango.webp" }
+        ]
+      },
+      {
+        "id": "matcha",
+        "name": "Matcha & Drinks",
+        "eintraege": [
+          { "name": "Iced Strawberry Matcha", "beschreibung": "Erdbeerpüree, Milch, Ceremonial Matcha", "preis": "5,90 €", "bild": "assets/img/karte/drink-strawberry-matcha.webp" },
+          { "name": "Iced Matcha Latte", "beschreibung": "Ceremonial Matcha auf Milch und Eis", "preis": "5,20 €", "bild": "assets/img/karte/drink-iced-matcha.webp" },
+          { "name": "Matcha Latte", "beschreibung": "Heiß, mit Milch nach Wahl", "preis": "4,90 €", "bild": "assets/img/karte/drink-matcha-latte.webp" },
+          { "name": "Chai Latte", "beschreibung": "Gewürzter Schwarztee mit Milch und Zimt", "preis": "4,60 €", "bild": "assets/img/karte/drink-chai.webp" }
+        ]
+      },
+      {
+        "id": "kaffee",
+        "name": "Kaffee",
+        "eintraege": [
+          { "name": "Espresso", "beschreibung": "Specialty Roast, doppelt", "preis": "2,60 €", "bild": "assets/img/karte/coffee-espresso.webp" },
+          { "name": "Cappuccino", "beschreibung": "Espresso, Milchschaum, Latte Art", "preis": "3,80 €", "bild": "assets/img/karte/coffee-cappuccino.webp" },
+          { "name": "Flat White", "beschreibung": "Doppelter Espresso, wenig Milch", "preis": "4,20 €", "bild": "assets/img/karte/coffee-flatwhite.webp" },
+          { "name": "Iced Latte", "beschreibung": "Espresso auf Milch und Eis", "preis": "4,50 €", "bild": "assets/img/karte/coffee-iced-latte.webp" }
+        ]
+      },
+      {
+        "id": "extras",
+        "name": "Extras & Toppings",
+        "eintraege": [
+          { "name": "Granola", "beschreibung": "Hausgemacht, knusprig", "preis": "0,80 €", "bild": "assets/img/karte/extra-granola.webp" },
+          { "name": "Erdnussbutter", "beschreibung": "Cremig, ohne Zuckerzusatz", "preis": "1,00 €", "bild": "assets/img/karte/extra-peanut.webp" },
+          { "name": "Kokoschips", "beschreibung": "Geröstet", "preis": "0,70 €", "bild": "assets/img/karte/extra-coconut.webp" },
+          { "name": "Frische Früchte", "beschreibung": "Beeren, Banane, Mango", "preis": "1,20 €", "bild": "assets/img/karte/extra-fruit.webp" }
+        ]
+      }
+    ]
+  },
+  "oeffnungszeiten": {
+    "titel": "Öffnungszeiten",
+    "zusammenfassung": "Täglich 9–19 Uhr",
+    "tage": [
+      { "tag": "Montag", "zeiten": ["09:00-19:00"] },
+      { "tag": "Dienstag", "zeiten": ["09:00-19:00"] },
+      { "tag": "Mittwoch", "zeiten": ["09:00-19:00"] },
+      { "tag": "Donnerstag", "zeiten": ["09:00-19:00"] },
+      { "tag": "Freitag", "zeiten": ["09:00-19:00"] },
+      { "tag": "Samstag", "zeiten": ["09:00-19:00"] },
+      { "tag": "Sonntag", "zeiten": ["09:00-19:00"] }
+    ],
+    "geschlossen_text": "geschlossen"
+  },
+  "besuch": {
+    "kicker": "Besuch uns",
+    "titel": "Komm vorbei.",
+    "kursiv": "vorbei.",
+    "text": "Mitten in Langen, ein paar Schritte vom Bahnhof. Zum Mitnehmen oder für eine Pause am Fenster.",
+    "route_button": "Route planen",
+    "instagram_button": "Instagram",
+    "bewertung_text": "bei Google",
+    "bewertungen_wort": "Bewertungen"
+  },
+  "footer": {
+    "impressum_text": "Impressum",
+    "impressum_link": "impressum.html",
+    "datenschutz_text": "Datenschutz",
+    "datenschutz_link": "datenschutz.html",
+    "copyright": "© 2026 Karma Specialty Coffee",
+    "demo_hinweis": "Demo-Website. Preise und Speisekarte sind Beispielinhalte."
+  },
+  "bildkennzeichnung": {
+    "bild_text": "3D-Visualisierung",
+    "footer_text_anzeigen": true,
+    "footer_text": "Die Produktabbildungen sind 3D-Visualisierungen (Symbolbilder) und können vom tatsächlichen Produkt abweichen. Die Fotos unter „Impressionen“ stammen aus dem Café."
+  },
+  "bedienhilfen": {
+    "zum_inhalt_springen": "Zum Inhalt springen",
+    "hauptnavigation": "Hauptnavigation",
+    "galerie_label": "Fotos aus dem Café",
+    "laden": "Lädt",
+    "sterne_label": "von 5 Sternen"
+  }
+}

@@ -1,0 +1,353 @@
+{
+ "tropical": {
+  "final": "assets/render/tropical/final.webp",
+  "finalM": "assets/render/tropical/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/render/tropical/shadow.webp",
+  "layers": [
+   {
+    "name": "coconut",
+    "src": "assets/render/tropical/layers/coconut.webp",
+    "x": 0.32455,
+    "y": 0.13667,
+    "w": 0.45455,
+    "h": 0.11133
+   },
+   {
+    "name": "mango_1",
+    "src": "assets/render/tropical/layers/mango_1.webp",
+    "x": 0.35364,
+    "y": 0.21867,
+    "w": 0.13727,
+    "h": 0.09733
+   },
+   {
+    "name": "mango_2",
+    "src": "assets/render/tropical/layers/mango_2.webp",
+    "x": 0.52091,
+    "y": 0.20533,
+    "w": 0.16091,
+    "h": 0.09333
+   },
+   {
+    "name": "mango_3",
+    "src": "assets/render/tropical/layers/mango_3.webp",
+    "x": 0.25909,
+    "y": 0.22133,
+    "w": 0.12909,
+    "h": 0.09133
+   },
+   {
+    "name": "mango_4",
+    "src": "assets/render/tropical/layers/mango_4.webp",
+    "x": 0.45364,
+    "y": 0.146,
+    "w": 0.11909,
+    "h": 0.092
+   },
+   {
+    "name": "mango_5",
+    "src": "assets/render/tropical/layers/mango_5.webp",
+    "x": 0.63,
+    "y": 0.21867,
+    "w": 0.12273,
+    "h": 0.09733
+   },
+   {
+    "name": "pineapple_1",
+    "src": "assets/render/tropical/layers/pineapple_1.webp",
+    "x": 0.63091,
+    "y": 0.22,
+    "w": 0.16,
+    "h": 0.11333
+   },
+   {
+    "name": "pineapple_2",
+    "src": "assets/render/tropical/layers/pineapple_2.webp",
+    "x": 0.37545,
+    "y": 0.10533,
+    "w": 0.14545,
+    "h": 0.10467
+   },
+   {
+    "name": "pineapple_3",
+    "src": "assets/render/tropical/layers/pineapple_3.webp",
+    "x": 0.21545,
+    "y": 0.24067,
+    "w": 0.14182,
+    "h": 0.104
+   }
+  ],
+  "seq": {
+   "count": 26,
+   "dir": "assets/render/tropical/seq/",
+   "countM": 26,
+   "dirM": "assets/render/tropical/seq-m/"
+  }
+ },
+ "peanut": {
+  "final": "assets/render/peanut/final.webp",
+  "finalM": "assets/render/peanut/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/render/peanut/shadow.webp",
+  "seq": {
+   "count": 24,
+   "dir": "assets/render/peanut/seq/",
+   "countM": 24,
+   "dirM": "assets/render/peanut/seq-m/"
+  }
+ },
+ "berry": {
+  "final": "assets/render/berry/final.webp",
+  "finalM": "assets/render/berry/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "base": "assets/render/berry/base.webp",
+  "baseM": "assets/render/berry/base-m.webp",
+  "shadow": "assets/render/berry/shadow.webp",
+  "layers": [
+   {
+    "name": "blueberry_1",
+    "src": "assets/render/berry/layers/blueberry_1.webp",
+    "x": 0.28,
+    "y": 0.25267,
+    "w": 0.10182,
+    "h": 0.06733
+   },
+   {
+    "name": "blueberry_2",
+    "src": "assets/render/berry/layers/blueberry_2.webp",
+    "x": 0.36636,
+    "y": 0.23533,
+    "w": 0.11,
+    "h": 0.07733
+   },
+   {
+    "name": "blueberry_3",
+    "src": "assets/render/berry/layers/blueberry_3.webp",
+    "x": 0.46636,
+    "y": 0.236,
+    "w": 0.12,
+    "h": 0.086
+   },
+   {
+    "name": "blueberry_4",
+    "src": "assets/render/berry/layers/blueberry_4.webp",
+    "x": 0.58,
+    "y": 0.236,
+    "w": 0.10182,
+    "h": 0.07333
+   },
+   {
+    "name": "blueberry_5",
+    "src": "assets/render/berry/layers/blueberry_5.webp",
+    "x": 0.65545,
+    "y": 0.24867,
+    "w": 0.11273,
+    "h": 0.08133
+   },
+   {
+    "name": "blueberry_6",
+    "src": "assets/render/berry/layers/blueberry_6.webp",
+    "x": 0.22273,
+    "y": 0.248,
+    "w": 0.12,
+    "h": 0.08933
+   },
+   {
+    "name": "blueberry_7",
+    "src": "assets/render/berry/layers/blueberry_7.webp",
+    "x": 0.42727,
+    "y": 0.17533,
+    "w": 0.09545,
+    "h": 0.07533
+   },
+   {
+    "name": "blueberry_8",
+    "src": "assets/render/berry/layers/blueberry_8.webp",
+    "x": 0.53909,
+    "y": 0.16267,
+    "w": 0.10182,
+    "h": 0.08133
+   },
+   {
+    "name": "blueberry_9",
+    "src": "assets/render/berry/layers/blueberry_9.webp",
+    "x": 0.32182,
+    "y": 0.18067,
+    "w": 0.10455,
+    "h": 0.08867
+   },
+   {
+    "name": "coconut",
+    "src": "assets/render/berry/layers/coconut.webp",
+    "x": 0.31182,
+    "y": 0.14667,
+    "w": 0.34091,
+    "h": 0.09867
+   },
+   {
+    "name": "raspberry_1",
+    "src": "assets/render/berry/layers/raspberry_1.webp",
+    "x": 0.31091,
+    "y": 0.17133,
+    "w": 0.14909,
+    "h": 0.11333
+   },
+   {
+    "name": "raspberry_2",
+    "src": "assets/render/berry/layers/raspberry_2.webp",
+    "x": 0.60455,
+    "y": 0.18933,
+    "w": 0.15182,
+    "h": 0.11133
+   },
+   {
+    "name": "raspberry_3",
+    "src": "assets/render/berry/layers/raspberry_3.webp",
+    "x": 0.46727,
+    "y": 0.13133,
+    "w": 0.15,
+    "h": 0.108
+   },
+   {
+    "name": "raspberry_4",
+    "src": "assets/render/berry/layers/raspberry_4.webp",
+    "x": 0.24818,
+    "y": 0.20533,
+    "w": 0.15091,
+    "h": 0.112
+   },
+   {
+    "name": "strawberry_1",
+    "src": "assets/render/berry/layers/strawberry_1.webp",
+    "x": 0.44545,
+    "y": 0.104,
+    "w": 0.20909,
+    "h": 0.16867
+   }
+  ]
+ },
+ "matcha": {
+  "final": "assets/render/matcha/final.webp",
+  "finalM": "assets/render/matcha/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/render/matcha/shadow.webp",
+  "seq": {
+   "count": 34,
+   "dir": "assets/render/matcha/seq/",
+   "countM": 17,
+   "dirM": "assets/render/matcha/seq-m/"
+  }
+ },
+ "points": {
+  "puree": {
+   "x": 0.7391,
+   "y": 0.8488
+  },
+  "milk": {
+   "x": 0.7626,
+   "y": 0.6583
+  },
+  "matcha": {
+   "x": 0.7862,
+   "y": 0.466
+  },
+  "rim": {
+   "y": 0.3387
+  },
+  "bottom": {
+   "y": 0.9252
+  },
+  "rim_left": {
+   "x": 0.1984
+  },
+  "rim_right": {
+   "x": 0.8016
+  }
+ },
+ "classic": {
+  "final": "assets/render/classic/final.webp",
+  "finalM": "assets/render/classic/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/render/classic/shadow.webp",
+  "layers": [
+   {
+    "name": "banana_1",
+    "src": "assets/render/classic/layers/banana_1.webp",
+    "x": 0.61727,
+    "y": 0.19467,
+    "w": 0.16818,
+    "h": 0.17067
+   },
+   {
+    "name": "banana_2",
+    "src": "assets/render/classic/layers/banana_2.webp",
+    "x": 0.22273,
+    "y": 0.20867,
+    "w": 0.15727,
+    "h": 0.15733
+   },
+   {
+    "name": "granola_1",
+    "src": "assets/render/classic/layers/granola_1.webp",
+    "x": 0.45636,
+    "y": 0.178,
+    "w": 0.18182,
+    "h": 0.10133
+   },
+   {
+    "name": "granola_2",
+    "src": "assets/render/classic/layers/granola_2.webp",
+    "x": 0.30364,
+    "y": 0.20467,
+    "w": 0.16182,
+    "h": 0.08133
+   },
+   {
+    "name": "granola_3",
+    "src": "assets/render/classic/layers/granola_3.webp",
+    "x": 0.55909,
+    "y": 0.24867,
+    "w": 0.11364,
+    "h": 0.07067
+   },
+   {
+    "name": "strawberry_1",
+    "src": "assets/render/classic/layers/strawberry_1.webp",
+    "x": 0.29909,
+    "y": 0.10933,
+    "w": 0.27091,
+    "h": 0.214
+   },
+   {
+    "name": "strawberry_2",
+    "src": "assets/render/classic/layers/strawberry_2.webp",
+    "x": 0.58,
+    "y": 0.12467,
+    "w": 0.20455,
+    "h": 0.17467
+   }
+  ],
+  "seq": {
+   "count": 48,
+   "dir": "assets/render/classic/seq/",
+   "countM": 24,
+   "dirM": "assets/render/classic/seq-m/"
+  }
+ }
+}

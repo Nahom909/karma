@@ -1,0 +1,10 @@
+/* Impressum & Datenschutz */
+.legal { background: var(--cream); }
+.legal__head { padding-top: 1.6rem; padding-bottom: 1rem; }
+.legal__back { text-decoration: none; font-weight: 600; }
+.legal__main { max-width: 760px; padding-top: 2rem; padding-bottom: 6rem; }
+.legal__main h1 { margin: 1.5rem 0 2rem; }
+.legal__main h2 { margin: 2.2rem 0 .6rem; font-size: 1.05rem; font-weight: 600; }
+.legal__main p { color: var(--ink-soft); }
+.legal__placeholder { padding: 1rem 1.2rem; border-radius: 14px; background: var(--berry); color: var(--berry-ink) !important; font-weight: 600; font-size: .92rem; }
+html:not(.content-ready) .legal__main { visibility: visible; }
