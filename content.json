@@ -126,15 +126,6 @@
     "hinweis": "Beispielkarte: Auswahl und Preise sind beispielhaft und können vor Ort abweichen.",
     "kategorien": [
       {
-        "id": "bowls",
-        "name": "Açaí Bowls",
-        "eintraege": [
-          { "name": "Classic Bowl", "beschreibung": "Açaí, Banane, Erdbeere, Granola, Honig", "preis": "9,50 €", "bild": "assets/img/karte/bowl-classic.webp" },
-          { "name": "Tropical Bowl", "beschreibung": "Açaí, Mango, Ananas, Kokos, Maracuja", "preis": "9,90 €", "bild": "assets/img/karte/bowl-tropical.webp" },
-          { "name": "Protein Bowl", "beschreibung": "Açaí, Erdnussbutter, Banane, Kakao-Nibs, Proteingranola", "preis": "10,50 €", "bild": "assets/img/karte/bowl-protein.webp" }
-        ]
-      },
-      {
         "id": "cups",
         "name": "Açaí Cups",
         "eintraege": [
@@ -142,6 +133,15 @@
           { "name": "Caramel Crunch", "beschreibung": "Açaí, Karamell, Vanille-Topping, Mandeln", "preis": "8,40 €", "bild": "assets/img/karte/cup-caramel.webp" },
           { "name": "Peanut Power", "beschreibung": "Açaí, Chiapudding, Erdnussbutter, Beeren", "preis": "8,90 €", "bild": "assets/img/karte/cup-peanut.webp" },
           { "name": "Berry Blast", "beschreibung": "Açaí, Chia, Erdbeeren, Blaubeeren, Kakao-Nibs", "preis": "8,40 €", "bild": "assets/img/karte/cup-berry.webp" }
+        ]
+      },
+      {
+        "id": "eigener-cup",
+        "name": "Eigener Cup",
+        "eintraege": [
+          { "name": "Açaí & Kokos", "beschreibung": "Açaí mit Kokos-Swirl, dazu zwei Toppings nach Wahl", "preis": "7,20 €", "bild": "assets/img/karte/cup-base-kokos.webp" },
+          { "name": "Açaí & Karamell", "beschreibung": "Açaí mit Karamell-Swirl, dazu zwei Toppings nach Wahl", "preis": "7,20 €", "bild": "assets/img/karte/cup-base-karamell.webp" },
+          { "name": "Açaí & Chia", "beschreibung": "Açaí mit Chiapudding, dazu zwei Toppings nach Wahl", "preis": "7,50 €", "bild": "assets/img/karte/cup-base-chia.webp" }
         ]
       },
       {

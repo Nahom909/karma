@@ -15,7 +15,7 @@ keine KI-Bilder und keine 3D-Modelle. Grundlage sind die drei Instagram-Fotos, d
 | `assets/photo/caramel/` | Caramel Crunch: Becher rechts auf Foto 2 (zusätzlich entsättigte „Vorschau“ für die Füll-Animation) | wie oben | wie oben | wie oben |
 | `assets/photo/peanut/` | Peanut Power: Becher auf Foto 1 (drei waagerechte Schichten + Topping) | wie oben | wie oben | wie oben |
 | `assets/photo/berry/` | Berry Blast: vorderer Becher auf Foto 3 | wie oben | wie oben | wie oben |
-| `assets/img/karte/cup-*.webp` (außer `cup-matcha.webp`) | Vorschaubilder der Speisekarte, Ausschnitte der Endbilder oben | wie oben | wie oben | wie oben |
+| `assets/img/karte/cup-*.webp` (außer `cup-matcha.webp`) | Vorschaubilder der Speisekarte: Ausschnitte der Endbilder oben, bei „Eigener Cup“ (`cup-base-*.webp`) die Becher ohne Topping | wie oben | wie oben | wie oben |
 | `assets/img/og-image.jpg` | Vorschaubild für Link-Vorschauen (WhatsApp, Facebook) mit dem Classic-Becher | wie oben | wie oben | wie oben |
 
 **Bearbeitung** (Skripte in `tools/photo/`, alles lokal, kein Upload zu einem Online-Dienst):
@@ -59,7 +59,7 @@ Sie bleibt deshalb eine **3D-Visualisierung** und ist auf der Website als „3D-
 | Datei / Ordner | Inhalt | Quelle | Urheber | Lizenz |
 |---|---|---|---|---|
 | `assets/render/matcha/` | Iced Strawberry Matcha: Endbild, Schicht-Sequenz, Schatten | eigene 3D-Visualisierung (Blender 5.0, Cycles), `tools/blender/matcha.py` | erstellt für Karma Specialty Coffee | frei nutzbar für die Website des Cafés, keine Rechte Dritter |
-| `assets/img/karte/` (Bowls, Smoothies, Drinks, Kaffee, Extras, `cup-matcha.webp`) | Vorschaubilder der Speisekarte | eigene 3D-Visualisierung, `tools/blender/menu.py` | wie oben | wie oben |
+| `assets/img/karte/` (Smoothies, Drinks, Kaffee, Extras, `cup-matcha.webp`) | Vorschaubilder der Speisekarte | eigene 3D-Visualisierung, `tools/blender/menu.py` | wie oben | wie oben |
 | Texturen (nicht auf der Website, entstehen in `_work/tex/`) | Erdbeer-Schnitt, Latte Art, Logo-Aufdruck für die 3D-Szenen | per Skript erzeugt (`tools/textures/`) | wie oben | wie oben |
 
 **Wortmarke:** `assets/img/wordmark.svg` ist dem echten Becheraufdruck „THISISYOUR karma“ nachgebaut, aus den Umrissen der

@@ -79,6 +79,16 @@ def main():
         bg.alpha_composite(crop)
         webp(bg.convert('RGB').resize((160, 160), Image.LANCZOS), os.path.join(KARTE, f'cup-{name}.webp'), 82)
         print('✓', name, [l['name'] for l in e['layers']])
+    # Karten-Motive „Eigener Cup“: die Becher ohne Topping (echte Fotos, nur die Becher-Ebene)
+    for name, out in (('classic', 'cup-base-kokos'), ('caramel', 'cup-base-karamell'), ('berry', 'cup-base-chia')):
+        body = Image.open(os.path.join(WORK, 'cups', name, 'body.png')).convert('RGBA')
+        box = body.getbbox()
+        cx = (box[0] + box[2]) / 2
+        side = max(box[2] - box[0], box[3] - box[1]) * 1.04
+        cy = (box[1] + box[3]) / 2
+        tile = Image.new('RGBA', (round(side), round(side)), (235, 221, 203, 255))
+        tile.alpha_composite(body.crop((round(cx - side / 2), round(cy - side / 2), round(cx + side / 2), round(cy + side / 2))))
+        webp(tile.convert('RGB').resize((160, 160), Image.LANCZOS), os.path.join(KARTE, out + '.webp'), 82)
     fruit = []
     for out, work in FRUIT.items():
         im = Image.open(os.path.join(WORK, 'sprites', work + '.png'))
