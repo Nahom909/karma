@@ -1,6 +1,7 @@
-"""Wandelt die Blender-Renderings (_work/out) in WebP-Dateien für die Website um und schreibt
-assets/render/manifest.json (Bildfolgen, passgenaue Topping-Ebenen mit Position, Schatten).
-Aufruf: python3 tools/build-assets.py [szene ...]"""
+"""Wandelt die Blender-Renderings (_work/out) in WebP-Dateien für die Website um und trägt sie in
+assets/render/manifest.json ein (Bildfolgen, Ebenen, Schatten). Seit die Açaí Cups echte Fotos sind
+(tools/photo/), gibt es hier nur noch die 3D-Matcha und die Karten-Motive.
+Aufruf: python3 tools/build-assets.py [matcha] [karte]"""
 import os, sys, json, glob
 from PIL import Image, ImageFilter
 
@@ -8,7 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.environ.get('KARMA_SRC') or os.path.join(ROOT, '_work', 'out')
 DST = os.path.join(ROOT, 'assets', 'render')
 KARTE = os.path.join(ROOT, 'assets', 'img', 'karte')
-SCENES = ['classic', 'tropical', 'peanut', 'berry', 'matcha']
+SCENES = ['matcha']  # die Becher kommen aus tools/photo/build.py
 MOBILE_W = 600
 SEQ_M_W = 520
 

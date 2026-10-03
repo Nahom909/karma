@@ -22,7 +22,7 @@
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="content.json" as="fetch" type="application/json" crossorigin>
 <link rel="preload" href="assets/render/manifest.json" as="fetch" type="application/json" crossorigin>
-<link rel="preload" as="image" imagesrcset="assets/render/classic/final-m.webp 600w, assets/render/classic/final.webp 1100w" imagesizes="(max-width: 767px) 40vh, 58vh" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="assets/photo/classic/final-m.webp 600w, assets/photo/classic/final.webp 1100w" imagesizes="(max-width: 767px) 40vh, 58vh" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,19 +35,19 @@
   "sameAs": ["https://www.instagram.com/yourkarmacoffee/"]
 }
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 <script>
   /* Bewegung nur, wenn der Besucher sie nicht im System abgeschaltet hat */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ok');
 </script>
 <!-- Erst die Inhalte, dann die Animationen. Alles liegt lokal, es gibt keine externen Verbindungen. -->
-<script src="assets/js/content-fallback.js?v=3" defer></script>
-<script src="assets/js/content.js?v=3" defer></script>
+<script src="assets/js/content-fallback.js?v=4" defer></script>
+<script src="assets/js/content.js?v=4" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/SplitText.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="assets/js/motion.js?v=3" defer></script>
+<script src="assets/js/motion.js?v=4" defer></script>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false">
@@ -73,7 +73,7 @@
 <!-- Durchgehende Farbfläche: wird beim Scrollen von Sorte zu Sorte überblendet -->
 <div class="tints" aria-hidden="true">
   <i class="tint tint--acai" data-tint="acai"></i>
-  <i class="tint tint--mango" data-tint="mango"></i>
+  <i class="tint tint--caramel" data-tint="caramel"></i>
   <i class="tint tint--peanut" data-tint="peanut"></i>
   <i class="tint tint--berry" data-tint="berry"></i>
   <i class="tint tint--strawberry" data-tint="strawberry"></i>
@@ -98,7 +98,7 @@
 
 <main id="inhalt">
 
-  <!-- 1 · Hero + Classic: eine gemeinsame, gepinnte Szene. Derselbe Becher wird vom Hero-Objekt zum Classic-Becher. -->
+  <!-- 1 · Hero + Classic: eine gemeinsame, gepinnte Szene. Derselbe Becher (echtes Foto) wird vom Hero-Objekt zum Classic-Becher. -->
   <div class="opener" id="top" data-opener>
     <div class="opener__pin" data-pin>
 
@@ -128,9 +128,8 @@
       </div>
 
       <figure class="stage stage--classic" data-stage="classic">
-        <img class="stage__shadow" src="assets/render/classic/shadow.webp" alt="" width="1100" height="1500" decoding="async">
-        <img class="stage__final" src="assets/render/classic/final.webp" srcset="assets/render/classic/final-m.webp 600w, assets/render/classic/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=hero.bild_beschreibung" alt="" width="1100" height="1500" fetchpriority="high" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+        <img class="stage__shadow" src="assets/photo/classic/shadow.webp" alt="" width="1100" height="1500" decoding="async">
+        <img class="stage__final" src="assets/photo/classic/final.webp" srcset="assets/photo/classic/final-m.webp 600w, assets/photo/classic/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=hero.bild_beschreibung" alt="" width="1100" height="1500" fetchpriority="high" decoding="async">
       </figure>
 
       <article class="copy copy--classic" id="sorten" aria-labelledby="name-classic" data-copy="classic">
@@ -147,18 +146,17 @@
     </div>
   </div>
 
-  <!-- 2 · Tropical: Becher füllt sich, Mango und Ananas schweben in Tiefenebenen -->
-  <section class="scene scene--tropical" id="tropical" aria-labelledby="name-tropical" data-scene="tropical">
+  <!-- 2 · Caramel Crunch: der Becher füllt sich von unten mit Farbe, die Haube landet obendrauf -->
+  <section class="scene scene--caramel" id="caramel" aria-labelledby="name-caramel" data-scene="caramel">
     <div class="scene__pin" data-pin>
-      <p class="bigtype bigtype--tropical" aria-hidden="true" data-bigtype><span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span></p>
-      <figure class="stage stage--tropical" data-stage="tropical">
-        <img class="stage__shadow" src="assets/render/tropical/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/tropical/final.webp" srcset="assets/render/tropical/final-m.webp 600w, assets/render/tropical/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.1.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+      <p class="bigtype bigtype--caramel" aria-hidden="true" data-bigtype><span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span></p>
+      <figure class="stage stage--caramel" data-stage="caramel">
+        <img class="stage__shadow" src="assets/photo/caramel/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
+        <img class="stage__final" src="assets/photo/caramel/final.webp" srcset="assets/photo/caramel/final-m.webp 600w, assets/photo/caramel/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.1.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
       </figure>
-      <article class="copy copy--tropical" data-copy="tropical">
+      <article class="copy copy--caramel" data-copy="caramel">
         <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">02 / 04</span></p>
-        <h2 class="copy__name" id="name-tropical" data-rich="signature.sorten.1.name" data-rich-italic="signature.sorten.1.kursiv"></h2>
+        <h2 class="copy__name" id="name-caramel" data-rich="signature.sorten.1.name" data-rich-italic="signature.sorten.1.kursiv"></h2>
         <p class="copy__sub" data-c="signature.sorten.1.untertitel"></p>
         <p class="copy__text" data-c="signature.sorten.1.beschreibung"></p>
         <div class="copy__meta">
@@ -170,15 +168,14 @@
     </div>
   </section>
 
-  <!-- 3 · Peanut Power: Erdnussbutter läuft am Becher herunter, der Becher kippt sanft -->
+  <!-- 3 · Peanut Power: der Becher setzt sich Schicht für Schicht zusammen, dann kippt er sanft -->
   <section class="scene scene--peanut" id="peanut" aria-labelledby="name-peanut" data-scene="peanut">
     <div class="scene__pin" data-pin>
       <p class="bigtype bigtype--peanut-a" aria-hidden="true" data-bigtype-a>Peanut Peanut Peanut</p>
       <p class="bigtype bigtype--peanut-b" aria-hidden="true" data-bigtype-b>Power Power Power</p>
       <figure class="stage stage--peanut" data-stage="peanut">
-        <img class="stage__shadow" src="assets/render/peanut/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/peanut/final.webp" srcset="assets/render/peanut/final-m.webp 600w, assets/render/peanut/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.2.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+        <img class="stage__shadow" src="assets/photo/peanut/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
+        <img class="stage__final" src="assets/photo/peanut/final.webp" srcset="assets/photo/peanut/final-m.webp 600w, assets/photo/peanut/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.2.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
       </figure>
       <article class="copy copy--peanut" data-copy="peanut">
         <div class="copy__col copy__col--a">
@@ -202,9 +199,8 @@
   <section class="scene scene--berry" id="berry" aria-labelledby="name-berry" data-scene="berry">
     <div class="scene__pin" data-pin>
       <figure class="stage stage--berry" data-stage="berry">
-        <img class="stage__shadow" src="assets/render/berry/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/berry/final.webp" srcset="assets/render/berry/final-m.webp 600w, assets/render/berry/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.3.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+        <img class="stage__shadow" src="assets/photo/berry/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
+        <img class="stage__final" src="assets/photo/berry/final.webp" srcset="assets/photo/berry/final-m.webp 600w, assets/photo/berry/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.3.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
       </figure>
       <article class="copy copy--berry" data-copy="berry">
         <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">04 / 04</span></p>
@@ -321,6 +317,7 @@
       <a data-instagram target="_blank" rel="noopener" data-c="cafe.instagram_name"></a>
     </nav>
     <p class="footer__note" data-render-footer></p>
+    <p class="footer__note footer__credits" data-credits></p>
     <p class="footer__note" data-c="footer.demo_hinweis"></p>
     <p class="footer__copy" data-c="footer.copyright"></p>
   </div>

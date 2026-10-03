@@ -42,7 +42,8 @@ Jede Zeile hat links einen **Namen** und rechts den **Inhalt**:
 | `speisekarte` | Kategorien und Einträge der Karte (Name, Beschreibung, Preis, Bild) |
 | `oeffnungszeiten` | Tage und Uhrzeiten |
 | `besuch`, `footer` | Texte unten, Links zu Impressum und Datenschutz |
-| `bildkennzeichnung` | Hinweis „3D-Visualisierung“ an den Becherbildern und im Footer |
+| `bildkennzeichnung` | Hinweis „3D-Visualisierung“ an der Matcha und Bildhinweis im Footer |
+| `bildnachweis` | Pflichtangaben zu den Fruchtfotos (Urheber, Titel, Link, Lizenz). **Bitte nicht löschen**, solange die Früchte auf der Seite fliegen |
 
 ---
 
@@ -97,12 +98,15 @@ Ohne Bild: `"bild": ""`.
 Die `beschreibung` lesen Blinde und Google, bitte kurz beschreiben, was zu sehen ist.
 Die Galerie ordnet beliebig viele Fotos automatisch im versetzten Raster an.
 
-### Echte Produktfotos statt 3D-Visualisierung
-Die großen Becher sind 3D-Visualisierungen mit aufwendigen Animationen (Drehung, Füllen, Explosion).
-Diese Animationen brauchen speziell vorbereitete Bilder. Ein echtes Foto kann aber jederzeit das **Endbild** ersetzen:
-Foto freistellen (transparenter Hintergrund, Becher von der Seite wie bisher, 1100 × 1500 Pixel) und als
-`assets/render/<sorte>/final.webp` und `final-m.webp` (600 Pixel breit) speichern. Danach in `content.json` bei
-`bildkennzeichnung` den Hinweis anpassen.
+### Die großen Becherbilder
+Die vier Açaí Cups sind **Ihre eigenen Instagram-Fotos**, freigestellt und für die Animationen in Teile zerlegt
+(Topping, Becher, bei Peanut Power drei Schichten). Wenn Sie die **Originalfotos** in voller Größe haben, werden die Becher
+noch schärfer. Schicken Sie die Dateien einfach an die Person, die die Website betreut; die Aufbereitung ist in der
+README beschrieben (Ordner `tools/photo/`). Ein neues Foto von Hand einzusetzen ist nicht sinnvoll, weil die Teile
+pixelgenau zusammenpassen müssen.
+
+Die Iced Strawberry Matcha ist weiterhin eine 3D-Visualisierung und deshalb als solche gekennzeichnet.
+Sobald es ein gutes Foto davon gibt, kann sie genauso ersetzt werden.
 
 ---
 

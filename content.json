@@ -37,8 +37,8 @@
     "bewertung_text": "Google-Bewertungen",
     "scroll_hinweis": "Scrollen",
     "siegel_text": "GOOD KARMA · SPECIALTY COFFEE · LANGEN · ",
-    "bild": "assets/render/classic/final.webp",
-    "bild_beschreibung": "Classic Açaí Cup im durchsichtigen Karma-Becher mit cremigem Bananen-Swirl, belegt mit Erdbeere, Banane und Granola"
+    "bild": "assets/photo/classic/final.webp",
+    "bild_beschreibung": "Classic Açaí Cup im durchsichtigen Karma-Becher mit weißem Kokos-Swirl, belegt mit Blaubeeren, Kokosraspeln und Erdbeeren"
   },
   "signature": {
     "titel": "Signature Cups",
@@ -52,23 +52,23 @@
         "name": "Classic",
         "kursiv": "Classic",
         "untertitel": "Der, mit dem alles anfängt.",
-        "beschreibung": "Cremiges Açaí mit Bananen-Swirl, oben frische Erdbeeren, Banane und knuspriges Granola.",
-        "zutaten": ["Açaí", "Banane", "Erdbeere", "Granola"],
+        "beschreibung": "Cremiges Açaí mit weißem Kokos-Swirl, oben frische Blaubeeren, Erdbeeren und Kokosraspeln.",
+        "zutaten": ["Açaí", "Kokos-Swirl", "Blaubeeren", "Erdbeeren", "Kokosraspeln"],
         "preis": "7,90 €",
-        "bild": "assets/render/classic/final.webp",
-        "bild_beschreibung": "Classic Açaí Cup mit Bananen-Swirl, Erdbeere, Banane und Granola"
+        "bild": "assets/photo/classic/final.webp",
+        "bild_beschreibung": "Foto: Classic Açaí Cup mit weißem Kokos-Swirl, belegt mit Blaubeeren, Kokosraspeln und Erdbeeren"
       },
       {
-        "id": "tropical",
+        "id": "caramel",
         "nummer": "02",
-        "name": "Tropical",
-        "kursiv": "Tropical",
-        "untertitel": "Sommer, das ganze Jahr.",
-        "beschreibung": "Açaí trifft Mango-Swirl. Oben reife Mango, Ananas und Kokosraspeln.",
-        "zutaten": ["Açaí", "Mango", "Ananas", "Kokosraspeln"],
+        "name": "Caramel Crunch",
+        "kursiv": "Crunch",
+        "untertitel": "Süß, aber mit Biss.",
+        "beschreibung": "Açaí mit Karamell-Swirl, oben eine Haube Vanille-Topping, geröstete Mandelblättchen und Karamellsauce.",
+        "zutaten": ["Açaí", "Karamell", "Vanille-Topping", "Mandelblättchen"],
         "preis": "8,40 €",
-        "bild": "assets/render/tropical/final.webp",
-        "bild_beschreibung": "Tropical Açaí Cup mit Mango-Swirl, Mangowürfeln, Ananas und Kokosraspeln"
+        "bild": "assets/photo/caramel/final.webp",
+        "bild_beschreibung": "Foto: Caramel Crunch Cup mit Karamell-Swirl im Açaí, Vanille-Topping, Mandelblättchen und Karamellsauce"
       },
       {
         "id": "peanut",
@@ -76,11 +76,11 @@
         "name": "Peanut Power",
         "kursiv": "Power",
         "untertitel": "Für lange Tage.",
-        "beschreibung": "Açaí, eine Schicht Erdnussbutter und Chiapudding. Oben Blaubeeren, Erdbeeren, Kakao-Nibs und noch mehr Erdnussbutter.",
-        "zutaten": ["Açaí", "Erdnussbutter", "Chiapudding", "Blaubeeren", "Kakao-Nibs"],
+        "beschreibung": "Unten Açaí, darüber Chiapudding mit Erdnussbutter. Oben Blaubeeren, Erdbeeren, Banane und geröstete Mandelblättchen.",
+        "zutaten": ["Açaí", "Erdnussbutter", "Chiapudding", "Beeren", "Banane", "Mandeln"],
         "preis": "8,90 €",
-        "bild": "assets/render/peanut/final.webp",
-        "bild_beschreibung": "Peanut Power Cup mit Schichten aus Açaí, Erdnussbutter und Chiapudding, Erdnussbutter läuft außen am Becher herunter"
+        "bild": "assets/photo/peanut/final.webp",
+        "bild_beschreibung": "Foto: Peanut Power Cup mit Schichten aus Açaí, Chiapudding und Erdnussbutter, belegt mit Beeren, Banane und Mandelblättchen"
       },
       {
         "id": "berry",
@@ -88,11 +88,11 @@
         "name": "Berry Blast",
         "kursiv": "Blast",
         "untertitel": "Alle Beeren, keine Kompromisse.",
-        "beschreibung": "Açaí mit Kokos-Joghurt-Swirl, getoppt mit Blaubeeren, Himbeeren, Erdbeere und Kokoschips.",
-        "zutaten": ["Açaí", "Kokos-Joghurt", "Blaubeeren", "Himbeeren", "Erdbeere"],
+        "beschreibung": "Açaí und Chiapudding mit Kokos-Swirl, getoppt mit Erdbeeren, Blaubeeren, Kakao-Nibs und weißer Schokosauce.",
+        "zutaten": ["Açaí", "Chiapudding", "Erdbeeren", "Blaubeeren", "Kakao-Nibs"],
         "preis": "8,40 €",
-        "bild": "assets/render/berry/final.webp",
-        "bild_beschreibung": "Berry Blast Cup mit weißem Kokos-Joghurt-Swirl, Blaubeeren, Himbeeren und Erdbeere"
+        "bild": "assets/photo/berry/final.webp",
+        "bild_beschreibung": "Foto: Berry Blast Cup mit Açaí und Chiapudding, belegt mit Erdbeeren, Blaubeeren, Kakao-Nibs und weißer Schokosauce"
       }
     ]
   },
@@ -112,7 +112,7 @@
   },
   "impressionen": {
     "titel": "Impressionen",
-    "text": "So sieht es bei uns aus, ganz ohne 3D.",
+    "text": "So sieht es bei uns aus, direkt vom Tresen.",
     "instagram_text": "Mehr auf Instagram",
     "bilder": [
       { "bild": "assets/impressionen/karma-02-swirl-duo.webp", "format": "hoch", "bildunterschrift": "Swirl & Crunch", "beschreibung": "Zwei Açaí-Becher mit weißem Swirl, Beeren, Kokos und Mandelblättchen auf der Theke" },
@@ -126,22 +126,22 @@
     "hinweis": "Beispielkarte: Auswahl und Preise sind beispielhaft und können vor Ort abweichen.",
     "kategorien": [
       {
-        "id": "bowls",
-        "name": "Açaí Bowls",
-        "eintraege": [
-          { "name": "Classic Bowl", "beschreibung": "Açaí, Banane, Erdbeere, Granola, Honig", "preis": "9,50 €", "bild": "assets/img/karte/bowl-classic.webp" },
-          { "name": "Tropical Bowl", "beschreibung": "Açaí, Mango, Ananas, Kokos, Maracuja", "preis": "9,90 €", "bild": "assets/img/karte/bowl-tropical.webp" },
-          { "name": "Protein Bowl", "beschreibung": "Açaí, Erdnussbutter, Banane, Kakao-Nibs, Proteingranola", "preis": "10,50 €", "bild": "assets/img/karte/bowl-protein.webp" }
-        ]
-      },
-      {
         "id": "cups",
         "name": "Açaí Cups",
         "eintraege": [
-          { "name": "Classic", "beschreibung": "Açaí, Bananen-Swirl, Erdbeere, Banane, Granola", "preis": "7,90 €", "bild": "assets/img/karte/cup-classic.webp" },
-          { "name": "Tropical", "beschreibung": "Açaí, Mango-Swirl, Mango, Ananas, Kokos", "preis": "8,40 €", "bild": "assets/img/karte/cup-tropical.webp" },
-          { "name": "Peanut Power", "beschreibung": "Açaí, Erdnussbutter, Chiapudding, Beeren", "preis": "8,90 €", "bild": "assets/img/karte/cup-peanut.webp" },
-          { "name": "Berry Blast", "beschreibung": "Açaí, Kokos-Joghurt, Blaubeeren, Himbeeren", "preis": "8,40 €", "bild": "assets/img/karte/cup-berry.webp" }
+          { "name": "Classic", "beschreibung": "Açaí, Kokos-Swirl, Blaubeeren, Erdbeeren, Kokos", "preis": "7,90 €", "bild": "assets/img/karte/cup-classic.webp" },
+          { "name": "Caramel Crunch", "beschreibung": "Açaí, Karamell, Vanille-Topping, Mandeln", "preis": "8,40 €", "bild": "assets/img/karte/cup-caramel.webp" },
+          { "name": "Peanut Power", "beschreibung": "Açaí, Chiapudding, Erdnussbutter, Beeren", "preis": "8,90 €", "bild": "assets/img/karte/cup-peanut.webp" },
+          { "name": "Berry Blast", "beschreibung": "Açaí, Chia, Erdbeeren, Blaubeeren, Kakao-Nibs", "preis": "8,40 €", "bild": "assets/img/karte/cup-berry.webp" }
+        ]
+      },
+      {
+        "id": "eigener-cup",
+        "name": "Eigener Cup",
+        "eintraege": [
+          { "name": "Açaí & Kokos", "beschreibung": "Açaí mit Kokos-Swirl, dazu zwei Toppings nach Wahl", "preis": "7,20 €", "bild": "assets/img/karte/cup-base-kokos.webp" },
+          { "name": "Açaí & Karamell", "beschreibung": "Açaí mit Karamell-Swirl, dazu zwei Toppings nach Wahl", "preis": "7,20 €", "bild": "assets/img/karte/cup-base-karamell.webp" },
+          { "name": "Açaí & Chia", "beschreibung": "Açaí mit Chiapudding, dazu zwei Toppings nach Wahl", "preis": "7,50 €", "bild": "assets/img/karte/cup-base-chia.webp" }
         ]
       },
       {
@@ -220,7 +220,17 @@
   "bildkennzeichnung": {
     "bild_text": "3D-Visualisierung",
     "footer_text_anzeigen": true,
-    "footer_text": "Die Produktabbildungen sind 3D-Visualisierungen (Symbolbilder) und können vom tatsächlichen Produkt abweichen. Die Fotos unter „Impressionen“ stammen aus dem Café."
+    "footer_text": "Die Açaí Cups und die Fotos unter „Impressionen“ sind echte Fotos aus dem Café. Die Iced Strawberry Matcha ist eine 3D-Visualisierung (Symbolbild). Die in den Animationen schwebenden Früchte sind Fotos aus der Sammlung Open Images, Nachweis unten."
+  },
+  "bildnachweis": {
+    "titel": "Bildnachweis Früchte",
+    "bearbeitung": "freigestellt, verkleinert, Heidelbeeren farblich angepasst",
+    "eintraege": [
+      { "motiv": "Erdbeere", "titel": "Fresh-Strawberry-Against-Blue-Sky__DSCF0707-768x1024", "urheber": "Emilian Robert Vicol", "link": "https://www.flickr.com/photos/free-stock/8425214419", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
+      { "motiv": "Erdbeere", "titel": "One Big Strawberry", "urheber": "dailylifeofmojo", "link": "https://www.flickr.com/photos/dailylifeofmojo/5586975143", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
+      { "motiv": "Himbeeren", "titel": "Red raspberries on white plate", "urheber": "Bernt Rostad", "link": "https://www.flickr.com/photos/brostad/9051431448", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
+      { "motiv": "Heidelbeeren", "titel": "Fresh Blueberries", "urheber": "John Morgan", "link": "https://www.flickr.com/photos/aidanmorgan/4646285067", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" }
+    ]
   },
   "bedienhilfen": {
     "zum_inhalt_springen": "Zum Inhalt springen",
