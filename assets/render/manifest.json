@@ -1,239 +1,186 @@
 {
- "tropical": {
-  "final": "assets/render/tropical/final.webp",
-  "finalM": "assets/render/tropical/final-m.webp",
+ "classic": {
+  "type": "photo",
+  "final": "assets/photo/classic/final.webp",
+  "finalM": "assets/photo/classic/final-m.webp",
   "size": [
    1100,
    1500
   ],
-  "shadow": "assets/render/tropical/shadow.webp",
+  "shadow": "assets/photo/classic/shadow.webp",
   "layers": [
    {
-    "name": "coconut",
-    "src": "assets/render/tropical/layers/coconut.webp",
-    "x": 0.32455,
-    "y": 0.13667,
-    "w": 0.45455,
-    "h": 0.11133
+    "name": "body",
+    "x": 0.16818,
+    "y": 0.30933,
+    "w": 0.72182,
+    "h": 0.62533,
+    "src": "assets/photo/classic/body.webp",
+    "srcM": "assets/photo/classic/body-m.webp"
    },
    {
-    "name": "mango_1",
-    "src": "assets/render/tropical/layers/mango_1.webp",
-    "x": 0.35364,
-    "y": 0.21867,
-    "w": 0.13727,
-    "h": 0.09733
-   },
-   {
-    "name": "mango_2",
-    "src": "assets/render/tropical/layers/mango_2.webp",
-    "x": 0.52091,
-    "y": 0.20533,
-    "w": 0.16091,
-    "h": 0.09333
-   },
-   {
-    "name": "mango_3",
-    "src": "assets/render/tropical/layers/mango_3.webp",
-    "x": 0.25909,
-    "y": 0.22133,
-    "w": 0.12909,
-    "h": 0.09133
-   },
-   {
-    "name": "mango_4",
-    "src": "assets/render/tropical/layers/mango_4.webp",
-    "x": 0.45364,
-    "y": 0.146,
-    "w": 0.11909,
-    "h": 0.092
-   },
-   {
-    "name": "mango_5",
-    "src": "assets/render/tropical/layers/mango_5.webp",
-    "x": 0.63,
-    "y": 0.21867,
-    "w": 0.12273,
-    "h": 0.09733
-   },
-   {
-    "name": "pineapple_1",
-    "src": "assets/render/tropical/layers/pineapple_1.webp",
-    "x": 0.63091,
-    "y": 0.22,
-    "w": 0.16,
-    "h": 0.11333
-   },
-   {
-    "name": "pineapple_2",
-    "src": "assets/render/tropical/layers/pineapple_2.webp",
-    "x": 0.37545,
-    "y": 0.10533,
-    "w": 0.14545,
-    "h": 0.10467
-   },
-   {
-    "name": "pineapple_3",
-    "src": "assets/render/tropical/layers/pineapple_3.webp",
-    "x": 0.21545,
-    "y": 0.24067,
-    "w": 0.14182,
-    "h": 0.104
+    "name": "top",
+    "x": 0.16818,
+    "y": 0.19467,
+    "w": 0.72818,
+    "h": 0.15533,
+    "src": "assets/photo/classic/top.webp",
+    "srcM": "assets/photo/classic/top-m.webp"
    }
   ],
-  "seq": {
-   "count": 26,
-   "dir": "assets/render/tropical/seq/",
-   "countM": 26,
-   "dirM": "assets/render/tropical/seq-m/"
-  }
+  "rim": [
+   0.1773,
+   0.8231,
+   0.3335
+  ],
+  "bbox": [
+   0.1809,
+   0.2,
+   0.8873,
+   0.9293
+  ]
+ },
+ "caramel": {
+  "type": "photo",
+  "final": "assets/photo/caramel/final.webp",
+  "finalM": "assets/photo/caramel/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/photo/caramel/shadow.webp",
+  "layers": [
+   {
+    "name": "body",
+    "x": 0.19545,
+    "y": 0.342,
+    "w": 0.66273,
+    "h": 0.604,
+    "src": "assets/photo/caramel/body.webp",
+    "srcM": "assets/photo/caramel/body-m.webp"
+   },
+   {
+    "name": "top",
+    "x": 0.2,
+    "y": 0.16333,
+    "w": 0.65364,
+    "h": 0.24267,
+    "src": "assets/photo/caramel/top.webp",
+    "srcM": "assets/photo/caramel/top-m.webp"
+   }
+  ],
+  "rim": [
+   0.202,
+   0.8482,
+   0.3999
+  ],
+  "bbox": [
+   0.2036,
+   0.1673,
+   0.8509,
+   0.942
+  ],
+  "ghost": "assets/photo/caramel/ghost.webp",
+  "ghostM": "assets/photo/caramel/ghost-m.webp"
  },
  "peanut": {
-  "final": "assets/render/peanut/final.webp",
-  "finalM": "assets/render/peanut/final-m.webp",
+  "type": "photo",
+  "final": "assets/photo/peanut/final.webp",
+  "finalM": "assets/photo/peanut/final-m.webp",
   "size": [
    1100,
    1500
   ],
-  "shadow": "assets/render/peanut/shadow.webp",
-  "seq": {
-   "count": 24,
-   "dir": "assets/render/peanut/seq/",
-   "countM": 24,
-   "dirM": "assets/render/peanut/seq-m/"
-  }
- },
- "berry": {
-  "final": "assets/render/berry/final.webp",
-  "finalM": "assets/render/berry/final-m.webp",
-  "size": [
-   1100,
-   1500
-  ],
-  "base": "assets/render/berry/base.webp",
-  "baseM": "assets/render/berry/base-m.webp",
-  "shadow": "assets/render/berry/shadow.webp",
+  "shadow": "assets/photo/peanut/shadow.webp",
   "layers": [
    {
-    "name": "blueberry_1",
-    "src": "assets/render/berry/layers/blueberry_1.webp",
-    "x": 0.28,
-    "y": 0.25267,
-    "w": 0.10182,
-    "h": 0.06733
+    "name": "band_1",
+    "x": 0.14636,
+    "y": 0.33067,
+    "w": 0.71636,
+    "h": 0.244,
+    "src": "assets/photo/peanut/band_1.webp",
+    "srcM": "assets/photo/peanut/band_1-m.webp"
    },
    {
-    "name": "blueberry_2",
-    "src": "assets/render/berry/layers/blueberry_2.webp",
-    "x": 0.36636,
-    "y": 0.23533,
-    "w": 0.11,
-    "h": 0.07733
+    "name": "band_2",
+    "x": 0.21818,
+    "y": 0.54867,
+    "w": 0.54091,
+    "h": 0.21733,
+    "src": "assets/photo/peanut/band_2.webp",
+    "srcM": "assets/photo/peanut/band_2-m.webp"
    },
    {
-    "name": "blueberry_3",
-    "src": "assets/render/berry/layers/blueberry_3.webp",
-    "x": 0.46636,
-    "y": 0.236,
-    "w": 0.12,
-    "h": 0.086
+    "name": "band_3",
+    "x": 0.24455,
+    "y": 0.74,
+    "w": 0.46636,
+    "h": 0.20133,
+    "src": "assets/photo/peanut/band_3.webp",
+    "srcM": "assets/photo/peanut/band_3-m.webp"
    },
    {
-    "name": "blueberry_4",
-    "src": "assets/render/berry/layers/blueberry_4.webp",
-    "x": 0.58,
-    "y": 0.236,
-    "w": 0.10182,
-    "h": 0.07333
-   },
-   {
-    "name": "blueberry_5",
-    "src": "assets/render/berry/layers/blueberry_5.webp",
-    "x": 0.65545,
-    "y": 0.24867,
-    "w": 0.11273,
-    "h": 0.08133
-   },
-   {
-    "name": "blueberry_6",
-    "src": "assets/render/berry/layers/blueberry_6.webp",
-    "x": 0.22273,
-    "y": 0.248,
-    "w": 0.12,
-    "h": 0.08933
-   },
-   {
-    "name": "blueberry_7",
-    "src": "assets/render/berry/layers/blueberry_7.webp",
-    "x": 0.42727,
-    "y": 0.17533,
-    "w": 0.09545,
-    "h": 0.07533
-   },
-   {
-    "name": "blueberry_8",
-    "src": "assets/render/berry/layers/blueberry_8.webp",
-    "x": 0.53909,
-    "y": 0.16267,
-    "w": 0.10182,
-    "h": 0.08133
-   },
-   {
-    "name": "blueberry_9",
-    "src": "assets/render/berry/layers/blueberry_9.webp",
-    "x": 0.32182,
-    "y": 0.18067,
-    "w": 0.10455,
-    "h": 0.08867
-   },
-   {
-    "name": "coconut",
-    "src": "assets/render/berry/layers/coconut.webp",
-    "x": 0.31182,
-    "y": 0.14667,
-    "w": 0.34091,
-    "h": 0.09867
-   },
-   {
-    "name": "raspberry_1",
-    "src": "assets/render/berry/layers/raspberry_1.webp",
-    "x": 0.31091,
-    "y": 0.17133,
-    "w": 0.14909,
-    "h": 0.11333
-   },
-   {
-    "name": "raspberry_2",
-    "src": "assets/render/berry/layers/raspberry_2.webp",
-    "x": 0.60455,
-    "y": 0.18933,
-    "w": 0.15182,
-    "h": 0.11133
-   },
-   {
-    "name": "raspberry_3",
-    "src": "assets/render/berry/layers/raspberry_3.webp",
-    "x": 0.46727,
-    "y": 0.13133,
-    "w": 0.15,
-    "h": 0.108
-   },
-   {
-    "name": "raspberry_4",
-    "src": "assets/render/berry/layers/raspberry_4.webp",
-    "x": 0.24818,
-    "y": 0.20533,
-    "w": 0.15091,
-    "h": 0.112
-   },
-   {
-    "name": "strawberry_1",
-    "src": "assets/render/berry/layers/strawberry_1.webp",
-    "x": 0.44545,
-    "y": 0.104,
-    "w": 0.20909,
-    "h": 0.16867
+    "name": "top",
+    "x": 0.15182,
+    "y": 0.22,
+    "w": 0.69545,
+    "h": 0.154,
+    "src": "assets/photo/peanut/top.webp",
+    "srcM": "assets/photo/peanut/top-m.webp"
    }
+  ],
+  "rim": [
+   0.153,
+   0.8503,
+   0.36
+  ],
+  "bbox": [
+   0.1527,
+   0.2247,
+   0.8564,
+   0.9367
+  ]
+ },
+ "berry": {
+  "type": "photo",
+  "final": "assets/photo/berry/final.webp",
+  "finalM": "assets/photo/berry/final-m.webp",
+  "size": [
+   1100,
+   1500
+  ],
+  "shadow": "assets/photo/berry/shadow.webp",
+  "layers": [
+   {
+    "name": "body",
+    "x": 0.16,
+    "y": 0.32,
+    "w": 0.68091,
+    "h": 0.62667,
+    "src": "assets/photo/berry/body.webp",
+    "srcM": "assets/photo/berry/body-m.webp"
+   },
+   {
+    "name": "top",
+    "x": 0.16545,
+    "y": 0.12533,
+    "w": 0.67,
+    "h": 0.31933,
+    "src": "assets/photo/berry/top.webp",
+    "srcM": "assets/photo/berry/top-m.webp"
+   }
+  ],
+  "rim": [
+   0.1666,
+   0.8329,
+   0.4397
+  ],
+  "bbox": [
+   0.1682,
+   0.1313,
+   0.8336,
+   0.9413
   ]
  },
  "matcha": {
@@ -277,77 +224,48 @@
    "x": 0.8016
   }
  },
- "classic": {
-  "final": "assets/render/classic/final.webp",
-  "finalM": "assets/render/classic/final-m.webp",
-  "size": [
-   1100,
-   1500
-  ],
-  "shadow": "assets/render/classic/shadow.webp",
-  "layers": [
-   {
-    "name": "banana_1",
-    "src": "assets/render/classic/layers/banana_1.webp",
-    "x": 0.61727,
-    "y": 0.19467,
-    "w": 0.16818,
-    "h": 0.17067
-   },
-   {
-    "name": "banana_2",
-    "src": "assets/render/classic/layers/banana_2.webp",
-    "x": 0.22273,
-    "y": 0.20867,
-    "w": 0.15727,
-    "h": 0.15733
-   },
-   {
-    "name": "granola_1",
-    "src": "assets/render/classic/layers/granola_1.webp",
-    "x": 0.45636,
-    "y": 0.178,
-    "w": 0.18182,
-    "h": 0.10133
-   },
-   {
-    "name": "granola_2",
-    "src": "assets/render/classic/layers/granola_2.webp",
-    "x": 0.30364,
-    "y": 0.20467,
-    "w": 0.16182,
-    "h": 0.08133
-   },
-   {
-    "name": "granola_3",
-    "src": "assets/render/classic/layers/granola_3.webp",
-    "x": 0.55909,
-    "y": 0.24867,
-    "w": 0.11364,
-    "h": 0.07067
-   },
-   {
-    "name": "strawberry_1",
-    "src": "assets/render/classic/layers/strawberry_1.webp",
-    "x": 0.29909,
-    "y": 0.10933,
-    "w": 0.27091,
-    "h": 0.214
-   },
-   {
-    "name": "strawberry_2",
-    "src": "assets/render/classic/layers/strawberry_2.webp",
-    "x": 0.58,
-    "y": 0.12467,
-    "w": 0.20455,
-    "h": 0.17467
-   }
-  ],
-  "seq": {
-   "count": 48,
-   "dir": "assets/render/classic/seq/",
-   "countM": 24,
-   "dirM": "assets/render/classic/seq-m/"
+ "fruit": [
+  {
+   "name": "strawberry_1",
+   "src": "assets/photo/fruit/strawberry_1.webp",
+   "w": 405,
+   "h": 560
+  },
+  {
+   "name": "strawberry_2",
+   "src": "assets/photo/fruit/strawberry_2.webp",
+   "w": 359,
+   "h": 460
+  },
+  {
+   "name": "raspberry_1",
+   "src": "assets/photo/fruit/raspberry_1.webp",
+   "w": 120,
+   "h": 122
+  },
+  {
+   "name": "raspberry_2",
+   "src": "assets/photo/fruit/raspberry_2.webp",
+   "w": 123,
+   "h": 91
+  },
+  {
+   "name": "blueberry_1",
+   "src": "assets/photo/fruit/blueberry_1.webp",
+   "w": 220,
+   "h": 220
+  },
+  {
+   "name": "blueberry_2",
+   "src": "assets/photo/fruit/blueberry_2.webp",
+   "w": 192,
+   "h": 192
+  },
+  {
+   "name": "blueberry_3",
+   "src": "assets/photo/fruit/blueberry_3.webp",
+   "w": 184,
+   "h": 184
   }
- }
+ ]
 }

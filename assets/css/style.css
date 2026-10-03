@@ -49,7 +49,7 @@
 
   /* Sorten: Fläche / Akzent */
   --acai: #EEE3EC;        --acai-ink: #4E1D47;
-  --mango: #F8E4CB;       --mango-ink: #A04B0C;
+  --caramel: #F4E1C9;     --caramel-ink: #8A4513;
   --peanut: #EFDFCB;      --peanut-ink: #74491F;
   --berry: #F5DCDD;       --berry-ink: #9A1D38;
   --strawberry: #F6DAD7;  --strawberry-ink: #B3303F;
@@ -151,7 +151,7 @@ html.is-loaded .loader { pointer-events: none; }
 .tints { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--cream); }
 .tint { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
 .tint--acai { background: var(--acai); }
-.tint--mango { background: var(--mango); }
+.tint--caramel { background: var(--caramel); }
 .tint--peanut { background: var(--peanut); }
 .tint--berry { background: var(--berry); }
 .tint--strawberry { background: var(--strawberry); }
@@ -161,7 +161,7 @@ html.is-loaded .loader { pointer-events: none; }
 /* Ohne Animation trägt jede Szene ihre Farbe selbst */
 html:not(.motion-ok) .tints { display: none; }
 html:not(.motion-ok) .opener { background: var(--acai); }
-html:not(.motion-ok) .scene--tropical { background: var(--mango); }
+html:not(.motion-ok) .scene--caramel { background: var(--caramel); }
 html:not(.motion-ok) .scene--peanut { background: var(--peanut); }
 html:not(.motion-ok) .scene--berry { background: var(--berry); }
 html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawberry), var(--matcha)); }
@@ -271,6 +271,13 @@ html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawber
 .stage__base { opacity: 0; }
 .stage__fx { position: absolute; inset: 0; pointer-events: none; }
 .stage__deco { will-change: transform; }
+/* Foto-Szenen: freigestellte Ebenen, schwebende Früchte, Füll-Fenster (Caramel) */
+.stage__fruit { position: absolute; height: auto; will-change: transform; }
+.stage__ghost { opacity: 0; }
+.stage__fill { position: absolute; overflow: hidden; will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%); mask-image: linear-gradient(to bottom, transparent 0, #000 9%); }
+.stage__fill-in { position: absolute; inset: 0; will-change: transform; }
+.stage__fill-in img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
 .ln { display: block; }
 .char { display: inline-block; }
 
@@ -354,7 +361,7 @@ html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawber
 }
 
 .copy--classic { --accent: var(--acai-ink); right: var(--gutter); top: 50%; transform: translateY(-50%); width: min(40vw, 560px); }
-.copy--tropical { --accent: var(--mango-ink); left: var(--gutter); top: 50%; transform: translateY(-50%); width: min(40vw, 560px); }
+.copy--caramel { --accent: var(--caramel-ink); left: var(--gutter); top: 50%; transform: translateY(-50%); width: min(40vw, 560px); }
 .copy--berry { --accent: var(--berry-ink); right: var(--gutter); top: 50%; transform: translateY(-50%); width: min(38vw, 540px); }
 .copy--matcha { --accent: var(--matcha-ink); right: var(--gutter); top: 50%; transform: translateY(-50%); width: min(30vw, 460px); }
 .copy__name--matcha { font-size: clamp(2.8rem, 5.2vw, 5.6rem); line-height: .95; }
@@ -367,7 +374,7 @@ html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawber
 /* ---------- Szenen 2–5 ---------- */
 
 .scene { position: relative; }
-.stage--tropical { position: absolute; z-index: 1; right: max(var(--gutter), 9vw); top: 50%; transform: translateY(-50%); }
+.stage--caramel { position: absolute; z-index: 1; right: max(var(--gutter), 9vw); top: 50%; transform: translateY(-50%); }
 .stage--peanut { position: absolute; z-index: 1; left: 50%; top: calc(50% + 3svh); transform: translate(-50%, -50%); }
 .stage--berry { position: absolute; z-index: 1; left: max(var(--gutter), 12vw); top: 50%; transform: translateY(-50%); }
 .stage--matcha { position: absolute; z-index: 1; left: max(var(--gutter), 5vw); top: 50%; transform: translateY(-50%); }
@@ -379,7 +386,7 @@ html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawber
   white-space: nowrap; pointer-events: none; user-select: none;
   color: transparent; -webkit-text-stroke: 1px var(--accent-line, rgba(42, 27, 21, .18));
 }
-.bigtype--tropical { --accent-line: rgba(160, 75, 12, .3); top: 50%; transform: translateY(-50%); }
+.bigtype--caramel { --accent-line: rgba(138, 69, 19, .3); top: 50%; transform: translateY(-50%); }
 .bigtype--peanut-a, .bigtype--peanut-b { --accent-line: rgba(116, 73, 31, .32); }
 .bigtype--peanut-a { top: 8svh; }
 .bigtype--peanut-b { bottom: 4svh; }
@@ -489,6 +496,9 @@ html:not(.motion-ok) .scene--matcha { background: linear-gradient(var(--strawber
 .footer__links { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 1.6rem; flex-wrap: wrap; justify-content: flex-end; }
 .footer__links a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
 .footer__note, .footer__copy { grid-column: 1 / -1; color: var(--ink-soft); max-width: 80ch; }
+.footer__credits { font-size: .76rem; line-height: 1.5; }
+.footer__credits a { color: inherit; }
+.footer__credits-title { font-weight: 600; }
 .footer__copy { margin-top: .6rem; }
 
 /* ==========================================================================
@@ -536,7 +546,7 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   .seal { width: 84px; left: auto; right: var(--gutter); top: calc(var(--nav-h) + 2.4svh); }
   .stage--classic { top: 46%; }
 
-  .copy, .copy--classic, .copy--tropical, .copy--berry, .copy--matcha {
+  .copy, .copy--classic, .copy--caramel, .copy--berry, .copy--matcha {
     left: var(--gutter); right: var(--gutter); width: auto; top: auto; bottom: 4.5svh; transform: none;
   }
   .copy__name { margin-top: .5rem; }
@@ -550,7 +560,7 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   .copy__price strong { font-size: 1.8rem; }
   .copy--matcha .copy__text { display: none; }
 
-  .stage--tropical, .stage--berry, .stage--matcha, .stage--peanut {
+  .stage--caramel, .stage--berry, .stage--matcha, .stage--peanut {
     left: 50%; right: auto; top: calc(var(--nav-h) + 1svh); transform: translateX(-50%);
   }
   .copy--peanut { inset: auto var(--gutter) 4.5svh var(--gutter); }

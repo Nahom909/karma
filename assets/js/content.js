@@ -75,9 +75,31 @@
       var k = get('bildkennzeichnung') || {};
       if (k.footer_text_anzeigen) foot.textContent = k.footer_text; else foot.remove();
     }
+    credits();
     // Siegel: Text wiederholen, bis der Kreis voll ist
     var seal = document.querySelector('[data-seal-text]');
     if (seal) seal.textContent = (get('hero.siegel_text') || '').repeat(2);
+  }
+
+  /* Bildnachweis der Fruchtfotos (CC BY 2.0 verlangt Urheber, Titel, Quelle, Lizenz und Hinweis auf Bearbeitung) */
+  function credits() {
+    var box = document.querySelector('[data-credits]');
+    var b = get('bildnachweis');
+    if (!box || !b || !(b.eintraege || []).length) { if (box) box.remove(); return; }
+    box.textContent = '';
+    box.appendChild(el('span', 'footer__credits-title', b.titel + ': '));
+    b.eintraege.forEach(function (e, i) {
+      if (i) box.appendChild(document.createTextNode(' · '));
+      box.appendChild(document.createTextNode(e.motiv + ': '));
+      var a = el('a', null, '„' + e.titel + '“');
+      a.href = e.link; a.target = '_blank'; a.rel = 'noopener';
+      box.appendChild(a);
+      box.appendChild(document.createTextNode(' von ' + e.urheber + ', '));
+      var l = el('a', null, e.lizenz);
+      l.href = e.lizenz_link; l.target = '_blank'; l.rel = 'noopener license';
+      box.appendChild(l);
+    });
+    if (b.bearbeitung) box.appendChild(document.createTextNode('. Bearbeitung: ' + b.bearbeitung + '.'));
   }
 
   /* ---------- Öffnungszeiten (immer nach deutscher Zeit) ---------- */

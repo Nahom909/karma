@@ -116,15 +116,17 @@
   Seq.prototype.redraw = function () { this.key = ''; this.draw(this.f); };
 
   /* ======================================================================
-     Bühne aufbauen: Canvas + passgenaue Ebenen aus manifest.json
+     Bühne aufbauen: Ebenen aus manifest.json (Fotos: freigestellte Becherteile; Matcha: 3D-Bildfolge)
      ====================================================================== */
+
+  var FRUIT = {};
 
   function buildStage(id) {
     var stage = $('[data-stage="' + id + '"]');
     var m = manifest[id];
     if (!stage || !m) return null;
     var mob = isMobile();
-    var S = { el: stage, m: m, final: $('.stage__final', stage), shadow: $('.stage__shadow', stage), layers: {}, list: [] };
+    var S = { id: id, el: stage, m: m, final: $('.stage__final', stage), shadow: $('.stage__shadow', stage), layers: {}, list: [], fruits: [] };
     if (m.seq) {
       var cv = document.createElement('canvas');
       cv.className = 'stage__seq';
@@ -137,16 +139,15 @@
       S.seq = new Seq(cv, urls);
       S.canvas = cv;
     }
-    if (m.base) {
-      var b = document.createElement('img');
-      b.className = 'stage__base';
-      b.alt = '';
-      b.setAttribute('aria-hidden', 'true');
-      b.decoding = 'async';
-      b.src = mob ? m.baseM : m.base;
-      b.style.opacity = 0;
-      stage.insertBefore(b, S.final);
-      S.base = b;
+    if (m.ghost) {
+      var g = document.createElement('img');
+      g.className = 'stage__ghost';
+      g.alt = '';
+      g.setAttribute('aria-hidden', 'true');
+      g.decoding = 'async';
+      g.src = mob ? m.ghostM : m.ghost;
+      stage.insertBefore(g, S.final);
+      S.ghost = g;
     }
     if (m.layers) {
       var wrap = document.createElement('div');
@@ -157,7 +158,7 @@
         im.className = 'stage__layer';
         im.alt = '';
         im.decoding = 'async';
-        im.src = L.src;
+        im.src = mob && L.srcM ? L.srcM : L.src;
         im.style.left = (L.x * 100) + '%';
         im.style.top = (L.y * 100) + '%';
         im.style.width = (L.w * 100) + '%';
@@ -173,13 +174,60 @@
     var centerX = mob || id === 'classic' || id === 'peanut';
     var centerY = !mob || id === 'classic';
     gsap.set(stage, { xPercent: centerX ? -50 : 0, yPercent: centerY ? -50 : 0, x: 0, y: 0 });
-    S.W = function () { return stage.offsetWidth; };
-    S.H = function () { return stage.offsetHeight; };
+    // Bühnengröße zwischenspeichern: viele Tweens fragen sie ab, jedes Auslesen würde ein Layout erzwingen
+    S.W = function () { return S._w || (S._w = stage.offsetWidth); };
+    S.H = function () { return S._h || (S._h = stage.offsetHeight); };
     return S;
   }
 
+  /* Echte Fruchtfotos (Open Images, CC BY 2.0) als schwebende Ebenen vor oder hinter dem Becher */
+  function fxHost(S, back) {
+    var key = back ? 'fxBack' : 'fxFront';
+    if (S[key]) return S[key];
+    var d = document.createElement('div');
+    d.className = 'stage__fx';
+    d.setAttribute('aria-hidden', 'true');
+    if (back) S.el.insertBefore(d, S.final); else S.el.appendChild(d);
+    S[key] = d;
+    return d;
+  }
+  function fruit(S, name, size, back, blur) {
+    var f = FRUIT[name];
+    if (!f) return null;
+    var im = document.createElement('img');
+    im.className = 'stage__fruit';
+    im.alt = '';
+    im.decoding = 'async';
+    im.src = f.src;
+    im.style.width = (size * 100) + '%';
+    if (blur) im.style.filter = 'blur(' + blur + 'px)';
+    im.style.opacity = 0;
+    fxHost(S, back).appendChild(im);
+    S.fruits.push(im);
+    return im;
+  }
+  /* Mittelpunkt einer Frucht auf einen Punkt der Bühne setzen (Anteile 0..1) */
+  function placeAt(el, cx, cy) {
+    el.style.left = (cx * 100) + '%';
+    el.style.top = (cy * 100) + '%';
+    gsap.set(el, { xPercent: -50, yPercent: -50 });
+  }
+  /* Endbild gegen die deckungsgleichen Einzelteile tauschen und zurück */
+  function swapIn(tl, S, at) {
+    tl.set(S.list.map(function (l) { return l.el; }), { opacity: 1 }, at).set(S.final, { opacity: 0 }, at + 0.02);
+  }
+  function swapOut(tl, S, at, extra) {
+    tl.to(S.final, { opacity: 1, duration: .2 }, at)
+      .set(S.list.map(function (l) { return l.el; }).concat(extra || []), { opacity: 0 }, at + 0.22);
+  }
+  /* kurzes Stauchen beim Aufsetzen */
+  function land(tl, el, at, H, depth) {
+    tl.to(el, { scaleY: 1 - (depth || 0.05), scaleX: 1 + (depth || 0.05) * 0.4, duration: .14, ease: 'power1.out' }, at)
+      .to(el, { y: 0, scaleY: 1, scaleX: 1, duration: .65, ease: 'back.out(2.6)' }, at + .14);
+  }
+
   function teardownStages() {
-    $$('.stage__seq, .stage__base, .stage__layers, .stage__fx').forEach(function (n) { n.remove(); });
+    $$('.stage__seq, .stage__base, .stage__layers, .stage__fx, .stage__ghost').forEach(function (n) { n.remove(); });
   }
 
   /* ======================================================================
@@ -271,31 +319,35 @@
   }
 
   /* ======================================================================
-     1 · Opener: Hero -> Classic (derselbe Becher)
+     1 · Opener: Hero -> Classic (derselbe Becher, echtes Foto)
+     Das Topping hebt ab wie in einer Explosionszeichnung, echte Früchte kreisen um den Becher.
      ====================================================================== */
 
-  /* Zielpunkte der Toppings auf dem Höhepunkt: Mittelpunkt als Anteil der Bühne (0..1), Drehung, Größe */
-  var CLASSIC_ORBIT = {
-    strawberry_1: [-0.02, 0.30, -28, 1.22],
-    strawberry_2: [1.12, 0.14, 34, 1.12],
-    banana_1: [1.18, 0.50, 48, 1.08],
-    banana_2: [-0.08, 0.64, -40, 1.1],
-    granola_1: [0.56, 0.02, 18, 1.2],
-    granola_2: [0.10, 0.06, -22, 1.1],
-    granola_3: [0.98, -0.02, 60, 1.05]
-  };
-  var CLASSIC_ORBIT_M = {
-    strawberry_1: [0.02, 0.10, -28, 1.1],
-    strawberry_2: [0.98, 0.06, 34, 1.05],
-    banana_1: [1.02, 0.42, 48, 1.0],
-    banana_2: [-0.02, 0.48, -40, 1.0],
-    granola_1: [0.52, -0.02, 18, 1.1],
-    granola_2: [0.24, 0.0, -22, 1.0],
-    granola_3: [0.78, 0.0, 60, 1.0]
-  };
-  function toTarget(l, o, W, H) {
-    var cx = l.L.x + l.L.w / 2, cy = l.L.y + l.L.h / 2;
-    return { x: function () { return (o[0] - cx) * W(); }, y: function () { return (o[1] - cy) * H(); } };
+  /* Früchte auf dem Höhepunkt: Name, Ziel x/y (Anteil der Bühne), Größe (Anteil der Bühnenbreite), Drehung, Unschärfe, hinter dem Becher */
+  var CLASSIC_FLY = [
+    ['strawberry_1', 1.07, 0.30, 0.30, 16, 0, false],
+    ['blueberry_1', 0.03, 0.17, 0.12, 0, 0, false],
+    ['raspberry_1', 0.22, 0.04, 0.15, -20, 0, true],
+    ['strawberry_2', -0.10, 0.53, 0.25, -26, 0, true],
+    ['blueberry_2', 0.95, 0.73, 0.11, 0, 0, true],
+    ['raspberry_2', 0.86, 0.08, 0.12, 24, 0, false],
+    ['blueberry_3', 1.24, 0.60, 0.10, 0, 2, false],
+    ['strawberry_1', -0.32, 0.88, 0.46, -40, 9, false],
+    ['blueberry_1', 1.32, 1.0, 0.22, 0, 7, false]
+  ];
+  var CLASSIC_FLY_M = [
+    ['strawberry_1', 0.93, 0.15, 0.24, 16, 0, false],
+    ['blueberry_1', 0.07, 0.12, 0.11, 0, 0, false],
+    ['raspberry_1', 0.32, 0.02, 0.13, -20, 0, true],
+    ['strawberry_2', 0.02, 0.52, 0.2, -26, 0, true],
+    ['blueberry_2', 0.97, 0.66, 0.1, 0, 0, true],
+    ['raspberry_2', 0.72, 0.03, 0.11, 24, 0, false],
+    ['strawberry_1', -0.12, 0.94, 0.34, -40, 6, false]
+  ];
+
+  function rimCenter(S, dy) {
+    var r = S.m.rim || [0.2, 0.8, 0.35];
+    return [(r[0] + r[1]) / 2, r[2] + (dy || 0)];
   }
 
   function opener(S, mob) {
@@ -307,10 +359,11 @@
     var tint = $('[data-tint="acai"]');
     var tl = pinTl(sec, function () { return mob ? 4.2 : 5.4; });
     var W = S.W, H = S.H;
-    var ORB = mob ? CLASSIC_ORBIT_M : CLASSIC_ORBIT;
+    var top = S.layers.top, body = S.layers.body;
+    var o = rimCenter(S, -0.05);
 
-    S.seq.loop = true;
     gsap.set(copy, { autoAlpha: 0 });
+    gsap.set([top, body], { transformOrigin: '50% 100%' });
 
     tl.to(w1, { xPercent: -60, x: function () { return -window.innerWidth * 0.25; }, autoAlpha: 0, duration: 1.4, ease: 'power2.in' }, 0)
       .to(w2, { xPercent: 60, x: function () { return window.innerWidth * 0.25; }, autoAlpha: 0, duration: 1.4, ease: 'power2.in' }, 0)
@@ -322,111 +375,100 @@
         x: function () { return mob ? 0 : -window.innerWidth * 0.22; },
         y: function () { return mob ? -window.innerHeight * 0.06 : 0; },
         scale: mob ? 0.86 : 0.94, duration: 1.7, ease: 'power2.inOut'
-      }, 0)
-      // Wechsel vom fertigen Bild auf Becher + einzelne Toppings (pixelgenau deckungsgleich)
-      .set(S.canvas, { opacity: 1 }, .98)
-      .set(S.list.map(function (l) { return l.el; }), { opacity: 1 }, .98)
-      .set(S.final, { opacity: 0 }, 1.0);
+      }, 0);
+    swapIn(tl, S, .98);
 
-    var proxy = { f: 0 };
-    tl.to(proxy, { f: S.seq.n, duration: 6.6, ease: 'power1.inOut', onUpdate: function () { S.seq.draw(proxy.f); } }, 1.0);
+    // Topping hebt ab, der Becher neigt sich leicht dagegen
+    tl.to(top, { y: function () { return -H() * (mob ? .12 : .17); }, rotation: -5, duration: 2.0, ease: 'power2.inOut' }, 1.0)
+      .to(body, { rotation: 2.2, duration: 2.0, ease: 'sine.inOut' }, 1.0)
+      .to(top, { y: function () { return -H() * (mob ? .135 : .19); }, rotation: -2, duration: 2.5, ease: 'sine.inOut' }, 3.0)
+      .to(body, { rotation: -1.2, duration: 2.5, ease: 'sine.inOut' }, 3.0);
 
-    // Toppings heben ab und kreisen um den Becher
-    S.list.forEach(function (l, k) {
-      var o = ORB[l.name] || [0.5, 0.0, 20, 1];
-      var t = toTarget(l, o, W, H);
-      tl.to(l.el, { x: t.x, y: t.y, rotation: o[2], scale: o[3], duration: 2.2, ease: 'power2.inOut' }, 1.05 + k * 0.07);
-      // leichtes Schweben auf dem Höhepunkt
-      tl.to(l.el, { y: function () { return t.y() - (0.025 + 0.012 * (k % 3)) * H(); }, rotation: o[2] + (k % 2 ? 12 : -12), duration: 2.4, ease: 'sine.inOut' }, 3.3 + k * 0.04);
+    // Früchte steigen aus dem Becher auf, schweben in Tiefenebenen und fliegen aus dem Bild
+    (mob ? CLASSIC_FLY_M : CLASSIC_FLY).forEach(function (d, k) {
+      var el = fruit(S, d[0], d[3], d[6], d[5]);
+      if (!el) return;
+      placeAt(el, o[0], o[1]);
+      var dx = function () { return (d[1] - o[0]) * W(); };
+      var dy = function () { return (d[2] - o[1]) * H(); };
+      var side = d[1] < 0.5 ? -1 : 1;
+      tl.fromTo(el, { x: 0, y: 0, scale: .2, rotation: d[4] - 70, opacity: 0 },
+        { x: dx, y: dy, scale: 1, rotation: d[4], opacity: 1, duration: 2.1, ease: 'power3.out' }, 1.05 + k * .06)
+        .to(el, { y: function () { return dy() - (0.03 + 0.02 * (k % 3)) * H(); }, rotation: d[4] + (k % 2 ? 14 : -14), duration: 2.4, ease: 'sine.inOut' }, 3.2 + k * .03)
+        .to(el, {
+          // obere Früchte fliegen nach oben hinaus, untere nach unten (nicht quer über den Text)
+          x: function () { return dx() * 1.4 + side * 1.1 * W(); }, y: function () { return dy() + (d[2] > 0.6 ? 0.7 : -(0.55 + 0.1 * (k % 3))) * H(); },
+          rotation: d[4] + side * 80, duration: 1.6, ease: 'power2.in'
+        }, 5.4 + k * .05)
+        .set(el, { opacity: 0 }, 7.1);
     });
 
     revealCopy(tl, copy, 2.0, 2.6);
 
-    // Toppings landen nacheinander auf dem Rand
-    var order = ['granola_2', 'granola_1', 'granola_3', 'banana_2', 'banana_1', 'strawberry_2', 'strawberry_1'];
-    order.forEach(function (name, k) {
-      var el = S.layers[name];
-      if (!el) return;
-      var at = 5.7 + k * 0.28;
-      tl.to(el, { x: 0, y: function () { return 0.012 * H(); }, rotation: 0, scale: 1, duration: 0.9, ease: 'power3.in' }, at)
-        .to(el, { y: 0, duration: 0.35, ease: 'power2.out' }, at + 0.9);
-    });
-    tl.to(S.final, { opacity: 1, duration: .2 }, 8.45)
-      .set([S.canvas].concat(S.list.map(function (l) { return l.el; })), { opacity: 0 }, 8.66)
-      .to({}, { duration: 1.3 }, 8.7);
+    // Topping landet wieder auf dem Becher
+    tl.to(top, { y: function () { return H() * .006; }, rotation: 0, duration: 1.0, ease: 'power3.in' }, 5.7)
+      .to(body, { rotation: 0, duration: 1.1, ease: 'sine.inOut' }, 5.6);
+    land(tl, top, 6.7, H, .045);
+    swapOut(tl, S, 7.7);
+    tl.to({}, { duration: 1.4 }, 7.95);
 
     anchors.sorten = function () { return tl.scrollTrigger.start + (tl.scrollTrigger.end - tl.scrollTrigger.start) * 0.46; };
     return tl;
   }
 
   /* ======================================================================
-     2 · Tropical: Becher füllt sich, Früchte schweben in Tiefenebenen und landen
+     2 · Caramel Crunch: der Becher füllt sich von unten mit Farbe, dann landet die Haube
      ====================================================================== */
 
-  var TROP_FLOAT = {
-    mango_1: [-1.15, 0.05, -30, 1.35], mango_2: [1.05, -0.12, 40, 1.2], mango_3: [-0.9, 0.42, 18, 1.1],
-    mango_4: [0.75, 0.36, -24, 1.45], mango_5: [1.25, 0.18, 60, 0.9], pineapple_1: [-0.7, -0.28, 50, 1.3],
-    pineapple_2: [0.35, -0.42, -40, 1.15], pineapple_3: [-1.25, -0.08, 20, 1.0], coconut: [0.1, -0.5, 10, 1.1]
-  };
-
-  function tropical(S, mob) {
-    var sec = $('[data-scene="tropical"]');
-    var copy = $('[data-copy="tropical"]');
+  function caramel(S, mob) {
+    var sec = $('[data-scene="caramel"]');
+    var copy = $('[data-copy="caramel"]');
     var big = $('[data-bigtype]', sec);
     var tl = pinTl(sec, function () { return mob ? 3.6 : 4.4; });
-    var W = S.W, H = S.H;
-    var k = mob ? 0.5 : 1;
-    tintIn('mango', sec);
+    var H = S.H;
+    var body = S.layers.body, top = S.layers.top;
+    var L = S.list.filter(function (l) { return l.name === 'body'; })[0].L;
+    tintIn('caramel', sec);
+
+    // Füll-Fenster: Rahmen fährt nach oben, der Inhalt läuft gegenläufig mit und bleibt so an seinem Platz.
+    // Der Rahmen ist oben um 12 % höher, damit die weiche Kante am Ende über dem Becherrand liegt.
+    var extra = 0.12;
+    var fill = document.createElement('div');
+    fill.className = 'stage__fill';
+    fill.style.left = (L.x * 100) + '%';
+    fill.style.top = ((L.y - L.h * extra) * 100) + '%';
+    fill.style.width = (L.w * 100) + '%';
+    fill.style.height = (L.h * (1 + extra) * 100) + '%';
+    var inner = document.createElement('div');
+    inner.className = 'stage__fill-in';
+    body.parentNode.insertBefore(fill, body);
+    fill.appendChild(inner);
+    inner.appendChild(body);
+    body.style.left = '0';
+    body.style.top = (extra / (1 + extra) * 100) + '%';
+    body.style.width = '100%';
+
     gsap.set(S.final, { opacity: 0 });
-    gsap.set(S.canvas, { opacity: 1 });
+    gsap.set([S.ghost, body], { opacity: 1 });
+    gsap.set(top, { transformOrigin: '50% 100%' });
     gsap.set(copy, { autoAlpha: 0 });
 
-    // Deko-Ebenen mit Tiefenunschärfe (Kopien einzelner Früchte)
-    var fx = document.createElement('div');
-    fx.className = 'stage__fx';
-    fx.setAttribute('aria-hidden', 'true');
-    S.el.appendChild(fx);
-    var decoDef = mob ? [['mango_2', -0.9, -0.5, 1.4, 4], ['pineapple_1', 0.95, 0.62, 1.3, 4]]
-      : [['mango_2', -1.5, -0.35, 2.2, 6], ['pineapple_1', 1.55, 0.5, 2.0, 7], ['mango_4', 1.45, -0.55, 0.7, 2], ['pineapple_3', -1.35, 0.7, 0.6, 2.5]];
-    var decos = [];
-    decoDef.forEach(function (d) {
-      var src = S.layers[d[0]];
-      if (!src) return;
-      var c = src.cloneNode();
-      c.className = 'stage__layer stage__deco';
-      c.style.filter = 'blur(' + d[4] + 'px)';
-      c.style.opacity = 1;
-      fx.appendChild(c);
-      decos.push({ el: c, d: d });
-    });
-
-    var proxy = { f: 0 };
-    S.seq.draw(0);
-    tl.to(proxy, { f: S.seq.n - 1, duration: 6, ease: 'power1.inOut', onUpdate: function () { S.seq.draw(proxy.f); } }, 0);
-    tl.fromTo(big, { xPercent: 0 }, { xPercent: -38, duration: 10 }, 0);
-
-    S.list.forEach(function (l, i) {
-      var o = TROP_FLOAT[l.name] || [1, 0, 0, 1];
-      gsap.set(l.el, { opacity: 1, x: function () { return o[0] * W() * k; }, y: function () { return o[1] * H() * k + 0.3 * H(); }, rotation: o[2], scale: o[3] });
-      // Parallax: jede Frucht schwebt in eigener Geschwindigkeit
-      tl.to(l.el, { y: function () { return o[1] * H() * k - (0.06 + 0.04 * (i % 3)) * H(); }, rotation: o[2] + (i % 2 ? 25 : -25), duration: 6, ease: 'none' }, 0);
-      tl.to(l.el, { x: 0, y: 0, rotation: 0, scale: 1, duration: 1.6, ease: 'power3.inOut' }, 6.0 + i * 0.12);
-    });
-    decos.forEach(function (o, i) {
-      var d = o.d;
-      gsap.set(o.el, { x: function () { return d[1] * W() * k; }, y: function () { return d[2] * H() * k + 0.4 * H(); }, scale: d[3] });
-      tl.to(o.el, { y: function () { return d[2] * H() * k - (0.35 + 0.15 * i) * H(); }, rotation: i % 2 ? 90 : -70, duration: 10, ease: 'none' }, 0);
-      tl.to(o.el, { autoAlpha: 0, duration: 1.2 }, 7 + i * 0.2);
-    });
+    tl.fromTo(fill, { yPercent: 100 }, { yPercent: 0, duration: 5.2, ease: 'power1.inOut' }, 0)
+      .fromTo(inner, { yPercent: -100 }, { yPercent: 0, duration: 5.2, ease: 'power1.inOut' }, 0)
+      .fromTo(big, { xPercent: 0 }, { xPercent: -38, duration: 10 }, 0)
+      .fromTo(top, { y: function () { return -H() * (mob ? .32 : .42); }, rotation: -7 },
+        { y: function () { return H() * .008; }, rotation: 0, duration: 1.2, ease: 'power3.in' }, 4.5)
+      .fromTo(top, { opacity: 0 }, { opacity: 1, duration: .3 }, 4.5)
+      .to(S.ghost, { opacity: 0, duration: 1.0 }, 5.6);
+    land(tl, top, 5.7, H, .06);
     revealCopy(tl, copy, 0.6, 2.6);
-    tl.to(S.final, { opacity: 1, duration: .2 }, 8.0)
-      .set([S.canvas].concat(S.list.map(function (l) { return l.el; })), { opacity: 0 }, 8.22)
-      .to({}, { duration: 1.6 }, 8.3);
+    swapOut(tl, S, 7.6, [S.ghost]);
+    tl.to({}, { duration: 1.6 }, 7.9);
     return tl;
   }
 
   /* ======================================================================
-     3 · Peanut Power: Drip läuft herunter, Becher kippt sanft
+     3 · Peanut Power: der Becher setzt sich Schicht für Schicht zusammen, dann kippt er sanft
      ====================================================================== */
 
   function peanut(S, mob) {
@@ -434,33 +476,47 @@
     var copy = $('[data-copy="peanut"]');
     var a = $('[data-bigtype-a]', sec), b = $('[data-bigtype-b]', sec);
     var tl = pinTl(sec, function () { return mob ? 3.2 : 3.8; });
+    var W = S.W, H = S.H, k = mob ? .55 : 1;
     tintIn('peanut', sec);
+    var bands = ['band_3', 'band_2', 'band_1'].map(function (n) { return S.layers[n]; }).filter(Boolean);
+    var top = S.layers.top;
     gsap.set(S.final, { opacity: 0 });
-    gsap.set(S.canvas, { opacity: 1 });
+    gsap.set(bands.concat([top]), { opacity: 1 });
     gsap.set(copy, { autoAlpha: 1 });
-    S.seq.draw(0);
-    var proxy = { f: 0 };
+
+    // Schichten gleiten abwechselnd von links und rechts herein: Açaí, Chiapudding, Erdnussbutter
+    var dirs = [-1, 1, -1];
+    bands.forEach(function (el, i) {
+      tl.fromTo(el, { x: function () { return dirs[i] * W() * .85 * k; }, rotation: dirs[i] * 7 },
+        { x: 0, rotation: 0, duration: 1.8, ease: 'power3.out' }, 0.1 + i * .75);
+    });
+    gsap.set(top, { transformOrigin: '50% 100%' });
+    tl.fromTo(top, { y: function () { return -H() * .5 * (mob ? .7 : 1); }, rotation: 8 },
+      { y: function () { return H() * .006; }, rotation: 0, duration: 1.1, ease: 'power3.in' }, 2.5)
+      .fromTo(top, { opacity: 0 }, { opacity: 1, duration: .3 }, 2.5);
+    land(tl, top, 3.6, H, .05);
+
     gsap.set(S.el, { transformOrigin: '50% 92%' });
-    tl.fromTo(S.el, { y: function () { return S.H() * 0.12; }, rotation: -7 }, { y: 0, rotation: 0, duration: 1.6, ease: 'power2.out' }, 0)
-      .to(proxy, { f: S.seq.n - 1, duration: 6, ease: 'power1.in', onUpdate: function () { S.seq.draw(proxy.f); } }, 1.4)
-      .to(S.el, { rotation: -4.5, duration: 2.2, ease: 'sine.inOut' }, 1.6)
-      .to(S.el, { rotation: 3.2, duration: 2.6, ease: 'sine.inOut' }, 3.8)
-      .to(S.el, { rotation: 0, duration: 1.8, ease: 'sine.inOut' }, 6.4)
+    tl.to(S.el, { rotation: -3.5, duration: 1.4, ease: 'sine.inOut' }, 4.4)
+      .to(S.el, { rotation: 2.4, duration: 1.6, ease: 'sine.inOut' }, 5.8)
+      .to(S.el, { rotation: 0, duration: 1.2, ease: 'sine.inOut' }, 7.4)
       .fromTo(a, { xPercent: 4 }, { xPercent: -30, duration: 10 }, 0)
       .fromTo(b, { xPercent: -34 }, { xPercent: 2, duration: 10 }, 0);
     var colA = $('.copy__col--a', copy), colB = $('.copy__col--b', copy);
     gsap.set([colA, colB], { autoAlpha: 0 });
     revealCopy(tl, colA, 0.7, 2.4);
     revealCopy(tl, colB, 3.2, 2.4);
-    tl.to(S.final, { opacity: 1, duration: .2 }, 7.6)
-      .set(S.canvas, { opacity: 0 }, 7.82)
-      .to({}, { duration: 2 }, 7.9);
+    swapOut(tl, S, 8.4);
+    tl.to({}, { duration: 1.4 }, 8.7);
     return tl;
   }
 
   /* ======================================================================
-     4 · Berry Blast: Explosion nach außen, dann zurück in den Becher
+     4 · Berry Blast: echte Beeren explodieren als Kranz um den Becher und kehren zurück
      ====================================================================== */
+
+  var BERRY_POOL = ['strawberry_1', 'blueberry_1', 'raspberry_1', 'blueberry_2', 'strawberry_2', 'raspberry_2', 'blueberry_3'];
+  var BERRY_SIZE = { strawberry_1: .2, strawberry_2: .19, raspberry_1: .12, raspberry_2: .11, blueberry_1: .095, blueberry_2: .09, blueberry_3: .085 };
 
   function berry(S, mob) {
     var sec = $('[data-scene="berry"]');
@@ -468,58 +524,43 @@
     var tl = pinTl(sec, function () { return mob ? 3.4 : 4.2; });
     var W = S.W, H = S.H;
     var k = mob ? 0.8 : 1;
+    var top = S.layers.top;
     tintIn('berry', sec);
     gsap.set(copy, { autoAlpha: 0 });
-    var cx = 0.5, cy = 0.24;
+    gsap.set(top, { transformOrigin: '50% 100%' });
+    var o = rimCenter(S, -0.07);
     var rnd = (function () { var s = 7; return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; })();
 
-    // zusätzliche Funken-Beeren für eine dichtere Explosion
-    var fx = document.createElement('div');
-    fx.className = 'stage__fx';
-    fx.setAttribute('aria-hidden', 'true');
-    S.el.appendChild(fx);
-    var pool = S.list.filter(function (l) { return /blueberry|raspberry/.test(l.name); });
-    var sparks = [];
-    for (var i = 0; i < (mob ? 8 : 14); i++) {
-      var src = pool[i % pool.length];
-      if (!src) break;
-      var c = src.el.cloneNode();
-      c.className = 'stage__layer stage__deco';
-      c.style.left = (cx * 100 - src.L.w * 50) + '%';
-      c.style.top = (cy * 100 - src.L.h * 50) + '%';
-      c.style.opacity = 0;
-      if (i % 3 === 0) c.style.filter = 'blur(' + (3 + (i % 4)) + 'px)';
-      fx.appendChild(c);
-      var ang = (i / 14) * Math.PI * 2 + rnd() * 0.5;
-      sparks.push({ el: c, ang: ang, dist: 0.5 + rnd() * 0.65, sc: 0.6 + rnd() * 1.3, rot: (rnd() - 0.5) * 540 });
+    swapIn(tl, S, .98);
+    // Das Topping springt kurz hoch, wenn die Beeren herausschießen
+    tl.to(top, { y: function () { return -H() * .04; }, rotation: 3, duration: 1.0, ease: 'power3.out' }, 1.0)
+      .to(top, { y: function () { return -H() * .05; }, rotation: -2, duration: 3.6, ease: 'sine.inOut' }, 2.0)
+      .to(top, { y: function () { return H() * .005; }, rotation: 0, duration: 1.0, ease: 'power3.in' }, 6.3);
+    land(tl, top, 7.3, H, .05);
+
+    var n = mob ? 11 : 18;
+    for (var i = 0; i < n; i++) {
+      var name = BERRY_POOL[i % BERRY_POOL.length];
+      var blur = i % 6 === 5 ? 4 + (i % 3) * 2 : 0;
+      var size = BERRY_SIZE[name] * (0.8 + rnd() * 0.6) * (blur ? 1.6 : 1);
+      var el = fruit(S, name, size, i % 3 === 1, blur);
+      if (!el) continue;
+      placeAt(el, o[0], o[1]);
+      (function (el, i, blur) {
+        var ang = (i / n) * Math.PI * 2 - Math.PI / 2 + (rnd() - 0.5) * 0.5;
+        var rx = 0.6 + rnd() * 0.32, ry = 0.36 + rnd() * 0.17;
+        if (blur) { rx *= 1.3; ry *= 1.25; }        // unscharfe Beeren liegen näher an der Kamera, also weiter außen
+        if (!mob && Math.cos(ang) > 0) rx *= 0.82;  // rechts steht der Text
+        var tx = 0.5 + Math.cos(ang) * rx, ty = 0.5 + Math.sin(ang) * ry;
+        var dx = function () { return (tx - o[0]) * W() * k; }, dy = function () { return (ty - o[1]) * H() * k; };
+        var rot = (rnd() - 0.5) * 420;
+        tl.fromTo(el, { x: 0, y: 0, scale: .2, rotation: 0, opacity: 0 },
+          { x: dx, y: dy, scale: 1, rotation: rot, opacity: 1, duration: 2.2, ease: 'expo.out' }, 1.0 + rnd() * .15)
+          .to(el, { x: function () { return dx() + Math.cos(ang) * .05 * W() * k; }, y: function () { return dy() + (Math.sin(ang) * .04 - .02) * H() * k; }, rotation: rot * 1.2, duration: 2.2, ease: 'sine.inOut' }, 3.2)
+          .to(el, { x: 0, y: 0, scale: .22, rotation: 0, duration: 1.9, ease: 'power3.in' }, 5.4 + rnd() * .3)
+          .to(el, { opacity: 0, duration: .25 }, 7.2);
+      })(el, i, blur);
     }
-
-    var layerEls = S.list.map(function (l) { return l.el; });
-    tl.set(S.base, { opacity: 1 }, 0.98)
-      .set(layerEls, { opacity: 1 }, 0.98)
-      .set(S.final, { opacity: 0 }, 1.0);
-
-    // Explosion: die Beeren verteilen sich als Kranz um den ganzen Becher
-    var N = S.list.length;
-    S.list.forEach(function (l, i) {
-      var lx = l.L.x + l.L.w / 2, ly = l.L.y + l.L.h / 2;
-      var ang = (i / N) * Math.PI * 2 - Math.PI / 2 + (rnd() - 0.5) * 0.5;
-      var rx = 0.62 + rnd() * 0.3, ry = 0.36 + rnd() * 0.16;
-      var tx = 0.5 + Math.cos(ang) * rx, ty = 0.5 + Math.sin(ang) * ry;
-      var dx = tx - lx, dy = ty - ly;
-      var sc = 1.05 + rnd() * 0.75, rot = (rnd() - 0.5) * 420;
-      tl.to(l.el, { x: function () { return dx * W() * k; }, y: function () { return dy * H() * k; }, scale: sc, rotation: rot, duration: 2.2, ease: 'expo.out' }, 1.0 + rnd() * 0.15)
-        .to(l.el, { x: function () { return (dx + Math.cos(ang) * 0.06) * W() * k; }, y: function () { return (dy + Math.sin(ang) * 0.04 - 0.02) * H() * k; }, rotation: rot * 1.2, duration: 2.2, ease: 'sine.inOut' }, 3.2)
-        .to(l.el, { x: 0, y: function () { return 0.01 * H(); }, scale: 0.98, rotation: 0, duration: 2.0, ease: 'power3.in' }, 5.4 + rnd() * 0.3)
-        .to(l.el, { y: 0, scale: 1, duration: 0.4, ease: 'power2.out' }, 7.5);
-    });
-    sparks.forEach(function (s) {
-      var dx = Math.cos(s.ang) * s.dist, dy = Math.sin(s.ang) * s.dist * 0.62 + 0.18;
-      tl.set(s.el, { opacity: 1 }, 1.0)
-        .fromTo(s.el, { x: 0, y: 0, scale: 0.3, rotation: 0 }, { x: function () { return dx * W() * k; }, y: function () { return dy * H() * k; }, scale: s.sc, rotation: s.rot, duration: 2.4, ease: 'expo.out' }, 1.0)
-        .to(s.el, { x: 0, y: 0, scale: 0.2, rotation: 0, duration: 1.9, ease: 'power3.in' }, 5.5)
-        .to(s.el, { opacity: 0, duration: 0.2 }, 7.2);
-    });
 
     // Titel: Buchstaben fliegen mit und setzen sich zusammen
     gsap.set(copy, { autoAlpha: 1 });
@@ -534,9 +575,8 @@
       .from(rest, { yPercent: 105, duration: 1.2, stagger: .14, ease: 'power3.out' }, 2.6)
       .fromTo($$('.copy__meta', copy), { '--rule': 0 }, { '--rule': 1, duration: 1.2, ease: 'power2.out' }, 3.2)
       .from($$('.copy__label, .copy__ingredients li, .copy__price', copy), { y: 18, autoAlpha: 0, duration: .9, stagger: .1 }, 3.4);
-    tl.to(S.final, { opacity: 1, duration: .2 }, 7.9)
-      .set([S.base].concat(layerEls), { opacity: 0 }, 8.12)
-      .to({}, { duration: 1.8 }, 8.2);
+    swapOut(tl, S, 7.95);
+    tl.to({}, { duration: 1.8 }, 8.2);
     return tl;
   }
 
@@ -662,23 +702,22 @@
     var meta = $$('.hero__meta, .hero__rating, .hero__cue, .nav');
     var seal = $('[data-seal]');
     var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-    var startF = Math.round(S.seq.n * 0.84);
-    var p = { f: startF };
+    var top = S.layers.top, body = S.layers.body;
     if (lenis) lenis.stop();
+    // Der Becher steigt auf, das Topping fällt obendrauf und setzt federnd auf
     gsap.set(S.final, { opacity: 0 });
-    gsap.set(S.canvas, { opacity: 1 });
-    S.seq.draw(startF);
-    var lay = S.list.map(function (l) { return l.el; });
+    gsap.set([top, body], { opacity: 1, transformOrigin: '50% 100%' });
     tl.to('.loader__mark, .loader__count', { y: -30, autoAlpha: 0, duration: .5, ease: 'power2.in', stagger: .05 }, 0)
       .to(loader, { yPercent: -100, duration: 1.0, ease: 'expo.inOut' }, .25)
       .set(loader, { display: 'none' })
       .from(S.el, { y: function () { return window.innerHeight * 0.32; }, scale: 0.88, duration: 1.6 }, .55)
-      .to(p, { f: S.seq.n, duration: 1.7, ease: 'power3.out', onUpdate: function () { S.seq.draw(p.f); } }, .55)
       .from(w, { yPercent: 110, autoAlpha: 0, duration: 1.4, stagger: .12 }, .7)
-      .fromTo(lay, { y: function (i) { return -S.H() * (0.42 + 0.06 * (i % 3)); }, rotation: function (i) { return i % 2 ? 40 : -40; }, opacity: 0 },
-        { y: 0, rotation: 0, opacity: 1, duration: 1.0, stagger: .07, ease: 'back.out(1.5)' }, 1.35)
-      .to(S.final, { opacity: 1, duration: .3, ease: 'none' }, 2.45)
-      .set(lay.concat([S.canvas]), { opacity: 0 }, 2.76)
+      .fromTo(top, { y: function () { return -S.H() * 0.5; }, rotation: -9 }, { y: 0, rotation: 0, duration: .8, ease: 'power3.in' }, 1.25)
+      .fromTo(top, { opacity: 0 }, { opacity: 1, duration: .25, ease: 'none' }, 1.25)
+      .to(top, { scaleY: .955, scaleX: 1.02, duration: .12, ease: 'power1.out' }, 2.05)
+      .to(top, { scaleY: 1, scaleX: 1, duration: .6, ease: 'back.out(3)' }, 2.17)
+      .to(S.final, { opacity: 1, duration: .3, ease: 'none' }, 2.8)
+      .set([top, body], { opacity: 0 }, 3.1)
       .from(meta, { y: 24, autoAlpha: 0, duration: 1, stagger: .08 }, 1.5)
       .from(seal, { scale: 0.6, rotation: -120, autoAlpha: 0, duration: 1.6 }, 1.6)
       .add(function () {
@@ -703,18 +742,21 @@
   function build() {
     var mob = isMobile();
     var stages = {};
-    ['classic', 'tropical', 'peanut', 'berry', 'matcha'].forEach(function (id) { stages[id] = buildStage(id); });
+    ['classic', 'caramel', 'peanut', 'berry', 'matcha'].forEach(function (id) { stages[id] = buildStage(id); });
     var ctx = gsap.context(function () {
-      if (stages.classic && stages.classic.seq) opener(stages.classic, mob);
+      if (stages.classic && stages.classic.layers.top) opener(stages.classic, mob);
     });
     var resize = function () { Object.keys(stages).forEach(function (k) { var s = stages[k]; if (s && s.seq) s.seq.resize(); }); };
+    var forget = function () { Object.keys(stages).forEach(function (k) { var s = stages[k]; if (s) s._w = s._h = 0; }); };
     ScrollTrigger.addEventListener('refresh', resize);
+    ScrollTrigger.addEventListener('refreshInit', forget);
+    cleanups.push(function () { ScrollTrigger.removeEventListener('refreshInit', forget); });
     resize();
     built = { ctx: ctx, stages: stages, mob: mob, resize: resize };
     var steps = [
-      function () { if (stages.tropical && stages.tropical.seq) tropical(stages.tropical, mob); },
-      function () { if (stages.peanut && stages.peanut.seq) peanut(stages.peanut, mob); },
-      function () { if (stages.berry && stages.berry.base) berry(stages.berry, mob); },
+      function () { if (stages.caramel && stages.caramel.layers.body) caramel(stages.caramel, mob); },
+      function () { if (stages.peanut && stages.peanut.layers.top) peanut(stages.peanut, mob); },
+      function () { if (stages.berry && stages.berry.layers.top) berry(stages.berry, mob); },
       function () { if (stages.matcha && stages.matcha.seq) matcha(stages.matcha, mob); },
       quiet, quietGallery, quietMenu
     ];
@@ -733,12 +775,15 @@
   function preloadAll(stages) {
     started = true;
     var prio = 3;
-    ['classic', 'tropical', 'peanut', 'berry', 'matcha'].forEach(function (id) {
+    ['classic', 'caramel', 'peanut', 'berry', 'matcha'].forEach(function (id) {
       var s = stages[id];
       if (!s) return;
-      if (s.seq) s.seq.preload(prio++);
-      s.list.forEach(function (l) { loadImg(l.L.src, prio); });
-      if (s.m.final) loadImg(isMobile() ? s.m.finalM : s.m.final, prio);
+      if (s.seq) s.seq.preload(prio);
+      if (s.m.final) loadImg(s.final.currentSrc || (isMobile() ? s.m.finalM : s.m.final), prio);
+      s.list.forEach(function (l) { loadImg(l.el.src, prio); });
+      if (s.ghost) loadImg(s.ghost.src, prio);
+      s.fruits.forEach(function (f) { loadImg(f.src, prio); });
+      prio++;
     });
   }
 
@@ -759,16 +804,16 @@
     // kritische Bilder für den Auftakt
     var crit = [];
     if (S) {
-      crit.push(loadImg(isMobile() ? S.m.finalM : S.m.final, 0));
-      S.list.forEach(function (l) { crit.push(loadImg(l.L.src, 0)); });
-      if (S.seq) { crit.push(S.seq.preload(0, 0, 0)); S.seq.preload(1, Math.round(S.seq.n * 0.84), S.seq.n - 1); }
+      crit.push(loadImg(S.final.currentSrc || (isMobile() ? S.m.finalM : S.m.final), 0));
+      S.list.forEach(function (l) { crit.push(loadImg(l.el.src, 0)); });
+      S.fruits.forEach(function (f) { loadImg(f.src, 1); });
     }
     var countEl = $('[data-loader-count]');
     var total = crit.length || 1, done = 0;
     crit.forEach(function (p) { p.then(function () { done++; if (countEl) countEl.textContent = Math.round(done / total * 100); }); });
     var go = function () {
       if (countEl) countEl.textContent = '100';
-      if (S && S.seq) intro(S); else { $('[data-loader]').style.display = 'none'; root.classList.add('is-loaded'); }
+      if (S && S.layers.top) intro(S); else { $('[data-loader]').style.display = 'none'; root.classList.add('is-loaded'); }
     };
     var timeout = new Promise(function (res) { setTimeout(res, 4500); });
     Promise.race([Promise.all(crit), timeout]).then(function () {
@@ -791,7 +836,10 @@
     var c = new Promise(function (res) {
       if (root.classList.contains('content-ready')) res(); else document.addEventListener('karma:content', res, { once: true });
     });
-    var m = fetch('assets/render/manifest.json').then(function (r) { return r.json(); }).then(function (j) { manifest = j; });
+    var m = fetch('assets/render/manifest.json').then(function (r) { return r.json(); }).then(function (j) {
+      manifest = j;
+      (j.fruit || []).forEach(function (f) { FRUIT[f.name] = f; });
+    });
     var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     Promise.all([c, m, f]).then(function () {
       if (!window.gsap || !window.ScrollTrigger || !window.SplitText) throw new Error('GSAP fehlt');
