@@ -75,31 +75,6 @@
       var k = get('bildkennzeichnung') || {};
       if (k.footer_text_anzeigen) foot.textContent = k.footer_text; else foot.remove();
     }
-    credits();
-    // Siegel: Text wiederholen, bis der Kreis voll ist
-    var seal = document.querySelector('[data-seal-text]');
-    if (seal) seal.textContent = (get('hero.siegel_text') || '').repeat(2);
-  }
-
-  /* Bildnachweis der Fruchtfotos (CC BY 2.0 verlangt Urheber, Titel, Quelle, Lizenz und Hinweis auf Bearbeitung) */
-  function credits() {
-    var box = document.querySelector('[data-credits]');
-    var b = get('bildnachweis');
-    if (!box || !b || !(b.eintraege || []).length) { if (box) box.remove(); return; }
-    box.textContent = '';
-    box.appendChild(el('span', 'footer__credits-title', b.titel + ': '));
-    b.eintraege.forEach(function (e, i) {
-      if (i) box.appendChild(document.createTextNode(' · '));
-      box.appendChild(document.createTextNode(e.motiv + ': '));
-      var a = el('a', null, '„' + e.titel + '“');
-      a.href = e.link; a.target = '_blank'; a.rel = 'noopener';
-      box.appendChild(a);
-      box.appendChild(document.createTextNode(' von ' + e.urheber + ', '));
-      var l = el('a', null, e.lizenz);
-      l.href = e.lizenz_link; l.target = '_blank'; l.rel = 'noopener license';
-      box.appendChild(l);
-    });
-    if (b.bearbeitung) box.appendChild(document.createTextNode('. Bearbeitung: ' + b.bearbeitung + '.'));
   }
 
   /* ---------- Öffnungszeiten (immer nach deutscher Zeit) ---------- */
@@ -240,28 +215,9 @@
     });
   }
 
-  /* ---------- Matcha-Schichten ---------- */
-
-  function layers() {
-    var ol = document.querySelector('[data-layers]');
-    if (!ol) return;
-    ol.textContent = '';
-    (get('matcha.schichten') || []).forEach(function (s) {
-      var li = el('li');
-      li.appendChild(el('i', 'layers__line'));
-      var box = el('span');
-      var top = el('span', 'layers__num', s.nummer);
-      box.appendChild(top);
-      box.appendChild(el('span', 'layers__name', ' ' + s.name));
-      box.appendChild(el('span', 'layers__text', s.text));
-      li.appendChild(box);
-      ol.appendChild(li);
-    });
-  }
-
   /* Euro-Zeichen in der Grundschrift setzen (in der Bodoni sieht es aus wie ein C) */
   function currency() {
-    $$('.copy__price strong, .dish__price').forEach(function (n) {
+    $$('.spot__price strong, .dish__price').forEach(function (n) {
       var t = n.textContent;
       var i = t.lastIndexOf('€');
       if (i < 0) return;
@@ -276,7 +232,6 @@
     hours();
     gallery();
     menu();
-    layers();
     currency();
     root.classList.add('content-ready');
     window.KARMA_CONTENT = data;

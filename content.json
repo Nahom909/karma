@@ -19,7 +19,7 @@
     "beschreibung": "Açaí Cups, Iced Matcha und Specialty Coffee in der Bahnstraße 4 in Langen (Hessen). Täglich von 9 bis 19 Uhr geöffnet."
   },
   "navigation": {
-    "sorten": "Signature Cups",
+    "acai": "Açaí",
     "matcha": "Matcha",
     "karte": "Karte",
     "besuch": "Besuch",
@@ -30,85 +30,48 @@
     "uhr": "Uhr"
   },
   "hero": {
-    "zeile_1": "Gutes",
-    "zeile_2": "Karma.",
-    "unterzeile": "Frisch gemixt.",
+    "titel_zeile_1": "Karma",
+    "titel_zeile_2": "Specialty Coffee",
     "claim": "Açaí, Matcha & Specialty Coffee mitten in Langen.",
+    "karte_button": "Zur Karte",
     "bewertung_text": "Google-Bewertungen",
-    "scroll_hinweis": "Scrollen",
-    "siegel_text": "GOOD KARMA · SPECIALTY COFFEE · LANGEN · ",
-    "bild": "assets/photo/classic/final.webp",
-    "bild_beschreibung": "Classic Açaí Cup im durchsichtigen Karma-Becher mit weißem Kokos-Swirl, belegt mit Blaubeeren, Kokosraspeln und Erdbeeren"
-  },
-  "signature": {
-    "titel": "Signature Cups",
-    "einleitung": "Vier Becher, die bei uns am häufigsten über den Tresen gehen. Gefrorenes Açaí, frisch geschichtet, oben drauf das gute Zeug.",
-    "groesse": "0,4 l",
-    "zutaten_titel": "Drin & drauf",
-    "sorten": [
-      {
-        "id": "classic",
-        "nummer": "01",
-        "name": "Classic",
-        "kursiv": "Classic",
-        "untertitel": "Der, mit dem alles anfängt.",
-        "beschreibung": "Cremiges Açaí mit weißem Kokos-Swirl, oben frische Blaubeeren, Erdbeeren und Kokosraspeln.",
-        "zutaten": ["Açaí", "Kokos-Swirl", "Blaubeeren", "Erdbeeren", "Kokosraspeln"],
-        "preis": "7,90 €",
-        "bild": "assets/photo/classic/final.webp",
-        "bild_beschreibung": "Foto: Classic Açaí Cup mit weißem Kokos-Swirl, belegt mit Blaubeeren, Kokosraspeln und Erdbeeren"
-      },
-      {
-        "id": "caramel",
-        "nummer": "02",
-        "name": "Caramel Crunch",
-        "kursiv": "Crunch",
-        "untertitel": "Süß, aber mit Biss.",
-        "beschreibung": "Açaí mit Karamell-Swirl, oben eine Haube Vanille-Topping, geröstete Mandelblättchen und Karamellsauce.",
-        "zutaten": ["Açaí", "Karamell", "Vanille-Topping", "Mandelblättchen"],
-        "preis": "8,40 €",
-        "bild": "assets/photo/caramel/final.webp",
-        "bild_beschreibung": "Foto: Caramel Crunch Cup mit Karamell-Swirl im Açaí, Vanille-Topping, Mandelblättchen und Karamellsauce"
-      },
-      {
-        "id": "peanut",
-        "nummer": "03",
-        "name": "Peanut Power",
-        "kursiv": "Power",
-        "untertitel": "Für lange Tage.",
-        "beschreibung": "Unten Açaí, darüber Chiapudding mit Erdnussbutter. Oben Blaubeeren, Erdbeeren, Banane und geröstete Mandelblättchen.",
-        "zutaten": ["Açaí", "Erdnussbutter", "Chiapudding", "Beeren", "Banane", "Mandeln"],
-        "preis": "8,90 €",
-        "bild": "assets/photo/peanut/final.webp",
-        "bild_beschreibung": "Foto: Peanut Power Cup mit Schichten aus Açaí, Chiapudding und Erdnussbutter, belegt mit Beeren, Banane und Mandelblättchen"
-      },
-      {
-        "id": "berry",
-        "nummer": "04",
-        "name": "Berry Blast",
-        "kursiv": "Blast",
-        "untertitel": "Alle Beeren, keine Kompromisse.",
-        "beschreibung": "Açaí und Chiapudding mit Kokos-Swirl, getoppt mit Erdbeeren, Blaubeeren, Kakao-Nibs und weißer Schokosauce.",
-        "zutaten": ["Açaí", "Chiapudding", "Erdbeeren", "Blaubeeren", "Kakao-Nibs"],
-        "preis": "8,40 €",
-        "bild": "assets/photo/berry/final.webp",
-        "bild_beschreibung": "Foto: Berry Blast Cup mit Açaí und Chiapudding, belegt mit Erdbeeren, Blaubeeren, Kakao-Nibs und weißer Schokosauce"
-      }
+    "becher": [
+      "Iced Strawberry Matcha mit grünem Matcha, Milch, Erdbeerpüree und Eiswürfeln",
+      "Açaí-Becher mit Mango-Maracuja-Schicht, belegt mit Erdbeeren, Banane und Kakao-Nibs",
+      "Açaí-Becher mit Granola und Kokoscreme, belegt mit Banane, Erdbeeren, Kiwi, Chia und Schokosauce",
+      "Rosa Erdbeer-Smoothie mit Erdbeerstücken und Strohhalm"
     ]
   },
-  "matcha": {
-    "kicker": "Und dann: Matcha",
-    "titel": "Iced Strawberry Matcha",
-    "kursiv": "Matcha",
-    "beschreibung": "Drei Schichten, die man sieht, bevor man sie schmeckt. Erst Erdbeere, dann Milch, oben Matcha. Umrühren oder Schicht für Schicht trinken.",
-    "schichten": [
-      { "nummer": "01", "name": "Erdbeerpüree", "text": "Frische Erdbeeren, leicht gesüßt" },
-      { "nummer": "02", "name": "Milch nach Wahl", "text": "Kuh, Hafer oder Mandel" },
-      { "nummer": "03", "name": "Ceremonial Matcha", "text": "Aufgeschlagen, nicht gerührt" }
-    ],
-    "preis": "5,90 €",
-    "bild": "assets/render/matcha/final.webp",
-    "bild_beschreibung": "Iced Strawberry Matcha mit roter Erdbeerschicht, weißer Milch und grünem Matcha, mit Eiswürfeln"
+  "highlights": {
+    "titel": "Highlight",
+    "zutaten_titel": "Drin & drauf",
+    "preis_hinweis": "Beispielpreis",
+    "eintraege": [
+      {
+        "id": "acai",
+        "name": "Karma Signature",
+        "kursiv": "Signature",
+        "untertitel": "Unser Açaí Cup, Schicht für Schicht.",
+        "beschreibung": "Gefrorenes Açaí im Wechsel mit Kokoscreme und knusprigem Granola. Oben Banane, Erdbeeren, Kiwi, ein Hauch Chia und Schokosauce.",
+        "zutaten": ["Açaí", "Kokoscreme", "Granola", "Banane", "Erdbeeren", "Kiwi", "Chia", "Schokosauce"],
+        "groesse": "0,4 l",
+        "preis": "8,90 €",
+        "hintergrundwort": "Açaí",
+        "bild_beschreibung": "Açaí-Becher mit Schichten aus Açaí, Kokoscreme und Granola, belegt mit Banane, Erdbeeren, Kiwi, Chia und Schokosauce"
+      },
+      {
+        "id": "matcha",
+        "name": "Iced Strawberry Matcha",
+        "kursiv": "Matcha",
+        "untertitel": "Drei Schichten auf Eis.",
+        "beschreibung": "Unten Erdbeerpüree, in der Mitte kalte Milch, oben aufgeschlagener Ceremonial Matcha. Umrühren oder Schicht für Schicht trinken.",
+        "zutaten": ["Ceremonial Matcha", "Milch nach Wahl", "Erdbeerpüree", "Eis"],
+        "groesse": "0,4 l",
+        "preis": "5,90 €",
+        "hintergrundwort": "Matcha",
+        "bild_beschreibung": "Iced Strawberry Matcha mit grünem Matcha, weißer Milch und roter Erdbeerschicht, mit Eiswürfeln"
+      }
+    ]
   },
   "impressionen": {
     "titel": "Impressionen",
@@ -129,6 +92,8 @@
         "id": "cups",
         "name": "Açaí Cups",
         "eintraege": [
+          { "name": "Karma Signature", "beschreibung": "Açaí, Kokoscreme, Granola, Banane, Erdbeeren, Kiwi, Schokosauce", "preis": "8,90 €", "bild": "assets/img/karte/cup-karma.webp" },
+          { "name": "Mango Passion", "beschreibung": "Açaí, Mango-Maracuja, Banane, Erdbeeren, Kakao-Nibs", "preis": "8,40 €", "bild": "assets/img/karte/cup-mango.webp" },
           { "name": "Classic", "beschreibung": "Açaí, Kokos-Swirl, Blaubeeren, Erdbeeren, Kokos", "preis": "7,90 €", "bild": "assets/img/karte/cup-classic.webp" },
           { "name": "Caramel Crunch", "beschreibung": "Açaí, Karamell, Vanille-Topping, Mandeln", "preis": "8,40 €", "bild": "assets/img/karte/cup-caramel.webp" },
           { "name": "Peanut Power", "beschreibung": "Açaí, Chiapudding, Erdnussbutter, Beeren", "preis": "8,90 €", "bild": "assets/img/karte/cup-peanut.webp" },
@@ -218,19 +183,9 @@
     "demo_hinweis": "Demo-Website. Preise und Speisekarte sind Beispielinhalte."
   },
   "bildkennzeichnung": {
-    "bild_text": "3D-Visualisierung",
+    "bild_text": "Symbolbild",
     "footer_text_anzeigen": true,
-    "footer_text": "Die Açaí Cups und die Fotos unter „Impressionen“ sind echte Fotos aus dem Café. Die Iced Strawberry Matcha ist eine 3D-Visualisierung (Symbolbild). Die in den Animationen schwebenden Früchte sind Fotos aus der Sammlung Open Images, Nachweis unten."
-  },
-  "bildnachweis": {
-    "titel": "Bildnachweis Früchte",
-    "bearbeitung": "freigestellt, verkleinert, Heidelbeeren farblich angepasst",
-    "eintraege": [
-      { "motiv": "Erdbeere", "titel": "Fresh-Strawberry-Against-Blue-Sky__DSCF0707-768x1024", "urheber": "Emilian Robert Vicol", "link": "https://www.flickr.com/photos/free-stock/8425214419", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
-      { "motiv": "Erdbeere", "titel": "One Big Strawberry", "urheber": "dailylifeofmojo", "link": "https://www.flickr.com/photos/dailylifeofmojo/5586975143", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
-      { "motiv": "Himbeeren", "titel": "Red raspberries on white plate", "urheber": "Bernt Rostad", "link": "https://www.flickr.com/photos/brostad/9051431448", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" },
-      { "motiv": "Heidelbeeren", "titel": "Fresh Blueberries", "urheber": "John Morgan", "link": "https://www.flickr.com/photos/aidanmorgan/4646285067", "lizenz": "CC BY 2.0", "lizenz_link": "https://creativecommons.org/licenses/by/2.0/deed.de" }
-    ]
+    "footer_text": "Die Becher im Hero und bei den Highlights sind Symbolbilder. Die Fotos unter „Impressionen“ und die Vorschaubilder der Signature Cups sind echte Fotos aus dem Café, die übrigen Vorschaubilder der Karte sind 3D-Visualisierungen."
   },
   "bedienhilfen": {
     "zum_inhalt_springen": "Zum Inhalt springen",
