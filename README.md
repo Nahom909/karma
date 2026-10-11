@@ -6,11 +6,11 @@ One-Pager für **Karma Specialty Coffee**, Bahnstraße 4, 63225 Langen (Hessen).
 
 | # | Abschnitt | Inhalt und Bewegung |
 |---|---|---|
-| 1 | Hero | „Karma / Specialty Coffee“ in goldener 3D-Schrift (reines CSS: Metallverlauf + gestaffelte Schatten), darunter die vier Becher aus dem Bild des Auftraggebers. Schrift und Becher blenden beim Laden einmal ein; auf dem Handy stehen die Becher zwei mal zwei |
+| 1 | Hero | „Karma / Specialty Coffee“ in goldener 3D-Schrift (reines CSS: mattes Gold + gestaffelte Schatten), darunter die vier Becher aus dem Bild des Auftraggebers. Schrift und Becher blenden beim Laden einmal ein; auf dem Handy stehen die Becher zwei mal zwei |
 | 2 | Highlight **Açaí** | Lila Fläche, Becher 3 (Karma Signature) mit Beschreibung, Zutaten und Beispielpreis in Gold; Becher und Text blenden beim Scrollen ein, das große Hintergrundwort gleitet |
 | 3 | Highlight **Matcha** | Grüne Fläche, Becher 1 (Iced Strawberry Matcha), gespiegelt aufgebaut |
 | 4 | Speisekarte | Beispielkarte mit sechs Kategorien, Vorschaubildern und mitlaufenden Kategorie-Tabs |
-| 5 | Impressionen | Echte Café-Fotos im versetzten Editorial-Raster mit Parallax |
+| 5 | Impressionen | Gemeinfreie Stimmungsbilder (CC0) im versetzten Editorial-Raster mit Parallax |
 | 6 | Besuch | Adresse, Öffnungszeiten mit „Heute geöffnet bis …“, Google-Bewertung, Instagram, Route |
 
 Es gibt keine gepinnten Becher-Szenen mehr. Animiert werden ausschließlich `transform` und `opacity`.
@@ -30,7 +30,7 @@ Bei „Bewegung reduzieren“ ist alles sofort und unbewegt sichtbar.
 | `assets/css/style.css` | Gestaltung; Farben, Schriften und Abstände als Variablen ganz oben |
 | `assets/hero/` | Die vier freigestellten Becher (Hero und Highlights) |
 | `assets/img/karte/` | Vorschaubilder der Speisekarte |
-| `assets/impressionen/` | Fotos aus dem Café |
+| `assets/impressionen/` | Stimmungsbilder (CC0, Nachweis in BILDQUELLEN.md) |
 | `assets/fonts/` | Bodoni Moda, Instrument Sans (selbst gehostet, Latein-Zeichensatz) |
 | `assets/vendor/` | GSAP 3.15 (inkl. ScrollTrigger, SplitText), Lenis 1.3 (lokal, keine CDN-Verbindung) |
 | `impressum.html`, `datenschutz.html` | **Platzhalter**, vor Veröffentlichung ausfüllen |
@@ -92,17 +92,17 @@ Lighthouse 12 gegen `tools/serve.mjs` (verhält sich wie der Webhoster mit `.hta
 
 | | Performance | Barrierefreiheit | Best Practices | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|
-| Desktop | 99–100 | 100 | 100 | 100 | 0,8 s | 0,004 |
-| Handy (gedrosselt) | 88 | 100 | 100 | 100 | 3,3 s | 0,002 |
+| Desktop | 100 | 100 | 100 | 100 | 0,7 s | 0,003 |
+| Handy (gedrosselt) | 95 | 100 | 100 | 100 | 2,5 s | 0,001 |
 
 - Konsole: keine Fehler und keine Warnungen; **keine einzige Anfrage an fremde Server** (geprüft mit `tools/shoot.mjs`,
   Desktop, Handy und „Bewegung reduzieren“).
-- Übertragung für die ganze Seite: ca. 0,8 MB.
+- Übertragung für die ganze Seite: ca. 1 MB.
 
 ## Qualitätsprüfung
 
 - `node tools/shoot.mjs desktop|mobile|reduced <ordner>`: Screenshots der ganzen Seite, Konsolenfehler, fremde Anfragen
 - `node tools/serve.mjs 8791`: lokaler Testserver mit Kompression und Cache-Headern wie in `.htaccess`
-- Nach Änderungen an CSS oder JavaScript die Versionsnummer `?v=` in `index.html` hochzählen (aktuell `?v=6`).
+- Nach Änderungen an CSS oder JavaScript die Versionsnummer `?v=` in `index.html` hochzählen (aktuell `?v=7`).
 - `.htaccess` (Apache): Kompression, Browser-Cache, Content-Security-Policy (nur eigene Dateien erlaubt). Beim Hochladen
   mitkopieren, sie ist eine versteckte Datei. Bei nginx-Hostern die Regeln entsprechend übertragen.

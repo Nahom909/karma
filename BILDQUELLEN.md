@@ -32,7 +32,7 @@ Urheberangabe prüfen und den Nachweis hier ergänzen.
 
 | Datei | Inhalt | Quelle | Urheber | Rechte |
 |---|---|---|---|---|
-| `assets/img/karte/cup-classic.webp`, `cup-caramel.webp`, `cup-peanut.webp`, `cup-berry.webp`, `cup-base-*.webp` | Vorschaubilder der Signature Cups und „Eigener Cup“ | Ausschnitte aus den Instagram-Fotos unter „Impressionen“ (Abschnitt 4), vom Auftraggeber bereitgestellt | Karma Specialty Coffee | Rechte beim Café. **Vor Veröffentlichung schriftliche Freigabe einholen.** |
+| `assets/img/karte/cup-classic.webp`, `cup-caramel.webp`, `cup-peanut.webp`, `cup-berry.webp`, `cup-base-*.webp` | Vorschaubilder der Signature Cups und „Eigener Cup“ | Ausschnitte aus drei Instagram-Fotos von @yourkarmacoffee (Screenshots), vom Auftraggeber bereitgestellt; die Fotos selbst sind nicht mehr auf der Website | Karma Specialty Coffee | Rechte beim Café. **Vor Veröffentlichung schriftliche Freigabe einholen.** |
 
 Bearbeitung: freigestellt (BiRefNet, lokal), zugeschnitten, **alle Metadaten (EXIF, ggf. GPS) entfernt**.
 Der Aufdruck „THISISYOUR karma“ auf diesen Bechern ist der echte Becheraufdruck des Cafés.
@@ -47,18 +47,27 @@ Der Aufdruck „THISISYOUR karma“ auf diesen Bechern ist der echte Becheraufdr
 **Wortmarke:** `assets/img/wordmark.svg` ist dem echten Becheraufdruck „THISISYOUR karma“ nachgebaut, aus den Umrissen der
 freien Schriften Jost und Courier Prime (siehe unten). Es ist das Markenzeichen des Cafés und wird nur für dessen eigene Website verwendet.
 
-## 4. Impressionen (echte Fotos aus dem Café)
+## 4. Impressionen: gemeinfreie Stimmungsbilder (CC0)
 
-| Datei | Motiv | Quelle | Urheber | Lizenz / Rechte |
+Die Fotos unter „Impressionen“ sind **keine Fotos aus dem Café**, sondern Stimmungsbilder. Alle sechs stehen unter
+**CC0 1.0** (Public Domain Dedication): Die Urheber haben auf alle Rechte verzichtet, die Bilder dürfen ohne Lizenz,
+ohne Namensnennung und auch kommerziell genutzt und bearbeitet werden. Gefunden über die Bildersuche Openverse
+(Filter: CC0 / Public Domain), einmalig heruntergeladen; die Website lädt nichts von diesen Seiten. Auf den Fotos sind
+keine Gesichter zu sehen, nur Hände. Der Hinweis „Stimmungsbilder, nicht aus dem Café“ steht im Footer und im Impressum.
+
+| Datei | Motiv | Quelle (Originalseite) | Urheber | Lizenz |
 |---|---|---|---|---|
-| `assets/impressionen/karma-01-chia-layer.webp` | Becher mit Açaí, Erdnussbutter, Chiapudding, Beeren | Instagram @yourkarmacoffee, https://www.instagram.com/yourkarmacoffee/, vom Auftraggeber als Screenshot bereitgestellt | Karma Specialty Coffee (Fotograf/in bitte beim Café erfragen) | Rechte beim Café. **Vor Veröffentlichung schriftliche Freigabe einholen.** |
-| `assets/impressionen/karma-02-swirl-duo.webp` | zwei Açaí-Becher mit Swirl | wie oben (Instagram-Bedienelement oben rechts weggeschnitten) | wie oben | wie oben |
-| `assets/impressionen/karma-03-trio.webp` | drei Becher in einer Reihe | wie oben (Instagram-Bedienelement weggeschnitten) | wie oben | wie oben |
+| `assets/impressionen/karma-01-smoothie-trio.webp` | drei geschichtete Smoothies | rawpixel.com, „Free strawberry mango peach smoothies“, https://www.rawpixel.com/image/5927939 | rawpixel (Public-Domain-Sammlung) | CC0 1.0 |
+| `assets/impressionen/karma-02-matcha-latte.webp` | Matcha Latte von oben | WordPress Photo Directory, https://wordpress.org/photos/photo/45669caef8/ | Gabriella Hawkins | CC0 1.0 |
+| `assets/impressionen/karma-03-iced-latte.webp` | Iced Latte mit Strohhalm | rawpixel.com, „Coffee latte, refreshing drink, summer“, https://www.rawpixel.com/image/6039514 | rawpixel (Public-Domain-Sammlung) | CC0 1.0 |
+| `assets/impressionen/karma-04-cappuccino.webp` | Cappuccino in blauer Tasse | StockSnap.io, „Cappuccino Froth“, https://stocksnap.io/photo/cappuccino-froth-0DS0WUZR9W | Atichart Wongubon | CC0 1.0 |
+| `assets/impressionen/karma-05-erdbeer-smoothie.webp` | Erdbeer-Smoothie im Glas | rawpixel.com, „Free strawberry smoothie“, https://www.rawpixel.com/image/5913729 | rawpixel (Public-Domain-Sammlung) | CC0 1.0 |
+| `assets/impressionen/karma-06-latte-art.webp` | Hände gießen Latte Art | rawpixel.com, „Free barista making latte art“, https://www.rawpixel.com/image/5926460 | rawpixel (Public-Domain-Sammlung) | CC0 1.0 |
 
-Bearbeitung: zugeschnitten, in WebP umgewandelt, **alle Metadaten (EXIF, ggf. GPS) entfernt**.
-Auf Foto 1 ist im Hintergrund unscharf ein Arm mit Handschuh zu sehen; eine Person ist nicht erkennbar.
-Die Fotos sind Screenshots mit etwa 750 Pixel Breite. Für die Veröffentlichung sind die Originaldateien
-(mindestens 1200 Pixel breit) deutlich besser.
+Lizenztext: https://creativecommons.org/publicdomain/zero/1.0/deed.de.
+Bearbeitung: auf 4:5 zugeschnitten, auf 800 × 1000 Pixel verkleinert, als WebP neu gespeichert (ohne Metadaten).
+Empfehlung vor dem Livegang: die sechs Originalseiten einmal aufrufen und die Lizenzangabe als Screenshot ablegen.
+Sobald es gute eigene Fotos aus dem Café gibt, sollten sie diese Stimmungsbilder ersetzen (Anleitung in LIES-MICH.md).
 
 ## 5. Nicht auf der Website
 

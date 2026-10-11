@@ -37,7 +37,7 @@ Jede Zeile hat links einen **Namen** und rechts den **Inhalt**:
 | `navigation` | Menüpunkte oben, Text „Heute geöffnet bis …“ |
 | `hero` | Goldener Schriftzug ganz oben („Karma“ / „Specialty Coffee“), Satz und Knopf darunter, Bildbeschreibungen der vier Becher |
 | `highlights` | Die zwei Highlights vor der Karte (Açaí auf Lila, Matcha auf Grün): Name, Untertitel, Beschreibung, Zutaten, Größe, Beispielpreis |
-| `impressionen` | Die Fotos aus dem Café |
+| `impressionen` | Die Stimmungsbilder (derzeit gemeinfreie Fotos, nicht aus dem Café; gern durch eigene ersetzen) |
 | `speisekarte` | Kategorien und Einträge der Karte (Name, Beschreibung, Preis, Bild) |
 | `oeffnungszeiten` | Tage und Uhrzeiten |
 | `besuch`, `footer` | Texte unten, Links zu Impressum und Datenschutz |

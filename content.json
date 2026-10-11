@@ -75,12 +75,15 @@
   },
   "impressionen": {
     "titel": "Impressionen",
-    "text": "So sieht es bei uns aus, direkt vom Tresen.",
-    "instagram_text": "Mehr auf Instagram",
+    "text": "Açaí, Matcha, Smoothies und Kaffee: so schmeckt ein guter Tag.",
+    "instagram_text": "Echte Fotos aus dem Café auf Instagram",
     "bilder": [
-      { "bild": "assets/impressionen/karma-02-swirl-duo.webp", "format": "hoch", "bildunterschrift": "Swirl & Crunch", "beschreibung": "Zwei Açaí-Becher mit weißem Swirl, Beeren, Kokos und Mandelblättchen auf der Theke" },
-      { "bild": "assets/impressionen/karma-01-chia-layer.webp", "format": "hoch", "bildunterschrift": "Schicht für Schicht", "beschreibung": "Becher mit Açaí, Erdnussbutter und Chiapudding, belegt mit Beeren, Banane und Mandeln" },
-      { "bild": "assets/impressionen/karma-03-trio.webp", "format": "hoch", "bildunterschrift": "Frisch gemacht", "beschreibung": "Drei Açaí-Becher in einer Reihe mit Blaubeeren, Erdbeeren, Erdnussbutter und Kakao-Nibs" }
+      { "bild": "assets/impressionen/karma-01-smoothie-trio.webp", "format": "hoch", "bildunterschrift": "Frisch geschichtet", "beschreibung": "Drei geschichtete Smoothies mit Banane, Mango und Granola in Gläsern" },
+      { "bild": "assets/impressionen/karma-02-matcha-latte.webp", "format": "hoch", "bildunterschrift": "Matcha Latte", "beschreibung": "Grüner Matcha Latte mit Milchschaum-Muster, von oben fotografiert" },
+      { "bild": "assets/impressionen/karma-03-iced-latte.webp", "format": "hoch", "bildunterschrift": "Iced Latte", "beschreibung": "Iced Latte mit Eiswürfeln und Strohhalm auf einem Holztisch" },
+      { "bild": "assets/impressionen/karma-04-cappuccino.webp", "format": "hoch", "bildunterschrift": "Cappuccino", "beschreibung": "Cappuccino mit Latte Art in einer blauen Tasse auf Untertasse" },
+      { "bild": "assets/impressionen/karma-05-erdbeer-smoothie.webp", "format": "hoch", "bildunterschrift": "Erdbeer-Smoothie", "beschreibung": "Rosa Erdbeer-Smoothie im Glas mit einer Erdbeere am Rand" },
+      { "bild": "assets/impressionen/karma-06-latte-art.webp", "format": "hoch", "bildunterschrift": "Latte Art", "beschreibung": "Hände gießen Milchschaum in eine Tasse Kaffee und formen ein Muster" }
     ]
   },
   "speisekarte": {
@@ -185,12 +188,12 @@
   "bildkennzeichnung": {
     "bild_text": "Symbolbild",
     "footer_text_anzeigen": true,
-    "footer_text": "Die Becher im Hero und bei den Highlights sind Symbolbilder. Die Fotos unter „Impressionen“ und die Vorschaubilder der Signature Cups sind echte Fotos aus dem Café, die übrigen Vorschaubilder der Karte sind 3D-Visualisierungen."
+    "footer_text": "Die Becher im Hero und bei den Highlights sind Symbolbilder. Die Fotos unter „Impressionen“ sind gemeinfreie Stimmungsbilder (CC0), nicht aus dem Café. Die Vorschaubilder der Signature Cups sind echte Fotos aus dem Café, die übrigen Vorschaubilder der Karte sind 3D-Visualisierungen."
   },
   "bedienhilfen": {
     "zum_inhalt_springen": "Zum Inhalt springen",
     "hauptnavigation": "Hauptnavigation",
-    "galerie_label": "Fotos aus dem Café",
+    "galerie_label": "Stimmungsbilder",
     "laden": "Lädt",
     "sterne_label": "von 5 Sternen"
   }

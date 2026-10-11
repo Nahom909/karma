@@ -218,27 +218,23 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   white-space: nowrap; opacity: .55; pointer-events: none;
 }
 
-/* ---------- Goldene 3D-Schrift ----------
-   Fläche: metallischer Verlauf, auf die Buchstaben zugeschnitten.
+/* ---------- Goldene 3D-Schrift (matt) ----------
+   Fläche: ruhiger, matter Goldton mit leichtem Verlauf, ohne Glanzstreifen.
    Tiefe: mehrere aneinandergehängte Schatten, jeder ein Stück dunkler, dann ein weicher Schlagschatten. */
 
 .gold {
   display: block;
   font-family: var(--display); font-weight: 700; font-optical-sizing: auto;
   color: var(--gold-mid);
-  background: linear-gradient(176deg,
-    #FFF6CF 0%, #F6DA86 16%, #E0B354 32%, #A8741F 47%, #7E5414 51%,
-    #C79437 60%, #F2D486 76%, #FFF0BC 84%, #D2A447 93%, #A0711F 100%);
+  background: linear-gradient(180deg, #D4AF62 0%, #C49A4C 45%, #B0863A 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
   filter:
-    drop-shadow(.004em .006em 0 #C08E2E)
-    drop-shadow(.004em .006em 0 #A97A24)
-    drop-shadow(.004em .006em 0 #93681D)
-    drop-shadow(.004em .006em 0 #7D5717)
-    drop-shadow(.004em .006em 0 #684712)
-    drop-shadow(.004em .006em 0 #54380E)
-    drop-shadow(0 .05em .05em rgba(64, 38, 10, .32));
+    drop-shadow(.004em .006em 0 #9C7633)
+    drop-shadow(.004em .006em 0 #8E6A2C)
+    drop-shadow(.004em .006em 0 #805F27)
+    drop-shadow(.004em .006em 0 #725422)
+    drop-shadow(0 .04em .05em rgba(64, 38, 10, .18));
 }
 .gold--xl {
   font-size: var(--fs-hero); line-height: .9; letter-spacing: -.025em;
@@ -250,18 +246,16 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   padding-left: .42em;
   font-weight: 600;
   filter:
-    drop-shadow(.012em .02em 0 #A97A24)
-    drop-shadow(.012em .02em 0 #6E4C14)
-    drop-shadow(0 .1em .1em rgba(64, 38, 10, .22));
+    drop-shadow(.012em .02em 0 #8E6A2C)
+    drop-shadow(0 .08em .08em rgba(64, 38, 10, .14));
 }
 .gold--price {
   font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1;
   font-variant-numeric: tabular-nums lining-nums;
   filter:
-    drop-shadow(.01em .015em 0 #A97A24)
-    drop-shadow(.01em .015em 0 #7D5717)
-    drop-shadow(.01em .015em 0 #54380E)
-    drop-shadow(0 .06em .08em rgba(0, 0, 0, .3));
+    drop-shadow(.01em .015em 0 #8E6A2C)
+    drop-shadow(.01em .015em 0 #725422)
+    drop-shadow(0 .05em .06em rgba(0, 0, 0, .22));
 }
 
 /* ---------- 1 · Hero ---------- */
@@ -272,7 +266,7 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   display: grid; grid-template-rows: auto 1fr auto; justify-items: center;
   padding: calc(var(--nav-h) + clamp(.5rem, 2svh, 1.6rem)) var(--gutter) clamp(1.2rem, 3svh, 2.2rem);
   background:
-    radial-gradient(60% 46% at 50% 30%, rgba(255, 246, 214, .9), transparent 70%),
+    radial-gradient(60% 46% at 50% 30%, rgba(255, 248, 236, .7), transparent 70%),
     radial-gradient(80% 60% at 50% 100%, var(--cream-deep), transparent 70%),
     var(--cream);
 }
@@ -285,16 +279,16 @@ html:not(.motion-ok) .nav { background: color-mix(in srgb, var(--cream) 90%, tra
   margin-top: clamp(.8rem, 3svh, 2.4rem);
 }
 /* Alle Becher im selben Maßstab wie im Originalbild: Höhe = eigene Pixelhöhe x Faktor */
-.hero__cups { --k: min(calc((100svh - var(--nav-h) - var(--fs-hero) * 1.04 - 14rem) / 744), calc((100vw - var(--gutter) * 2) / 1560)); }
+.hero__cups { --k: min(calc((100svh - var(--nav-h) - var(--fs-hero) * 1.04 - 14rem) / 743), calc((100vw - var(--gutter) * 2) / 1560)); }
 .hero__cup {
   position: relative; width: auto; height: calc(var(--h) * var(--k));
   margin: 0 calc(var(--k) * 6px);
   filter: drop-shadow(0 calc(var(--k) * 18px) calc(var(--k) * 16px) rgba(70, 40, 20, .2));
 }
-.hero__cup--matcha { --h: 659; }
-.hero__cup--mango { --h: 652; }
-.hero__cup--karma { --h: 648; }
-.hero__cup--pink { --h: 744; }
+.hero__cup--matcha { --h: 658; }
+.hero__cup--mango { --h: 651; }
+.hero__cup--karma { --h: 646; }
+.hero__cup--pink { --h: 743; }
 .hero__cups .render-badge { bottom: auto; top: 100%; margin-top: .5rem; color: var(--ink-soft); }
 .hero__foot {
   width: 100%; margin-top: clamp(1.6rem, 4svh, 2.6rem);
