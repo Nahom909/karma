@@ -75,9 +75,6 @@
       var k = get('bildkennzeichnung') || {};
       if (k.footer_text_anzeigen) foot.textContent = k.footer_text; else foot.remove();
     }
-    // Siegel: Text wiederholen, bis der Kreis voll ist
-    var seal = document.querySelector('[data-seal-text]');
-    if (seal) seal.textContent = (get('hero.siegel_text') || '').repeat(2);
   }
 
   /* ---------- Öffnungszeiten (immer nach deutscher Zeit) ---------- */
@@ -218,28 +215,9 @@
     });
   }
 
-  /* ---------- Matcha-Schichten ---------- */
-
-  function layers() {
-    var ol = document.querySelector('[data-layers]');
-    if (!ol) return;
-    ol.textContent = '';
-    (get('matcha.schichten') || []).forEach(function (s) {
-      var li = el('li');
-      li.appendChild(el('i', 'layers__line'));
-      var box = el('span');
-      var top = el('span', 'layers__num', s.nummer);
-      box.appendChild(top);
-      box.appendChild(el('span', 'layers__name', ' ' + s.name));
-      box.appendChild(el('span', 'layers__text', s.text));
-      li.appendChild(box);
-      ol.appendChild(li);
-    });
-  }
-
   /* Euro-Zeichen in der Grundschrift setzen (in der Bodoni sieht es aus wie ein C) */
   function currency() {
-    $$('.copy__price strong, .dish__price').forEach(function (n) {
+    $$('.spot__price strong, .dish__price').forEach(function (n) {
       var t = n.textContent;
       var i = t.lastIndexOf('€');
       if (i < 0) return;
@@ -254,7 +232,6 @@
     hours();
     gallery();
     menu();
-    layers();
     currency();
     root.classList.add('content-ready');
     window.KARMA_CONTENT = data;

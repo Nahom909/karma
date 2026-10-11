@@ -1,4 +1,5 @@
-"""Kleine Vorschaubilder für die Speisekarte: Bowls, Smoothies, Matcha-Drinks, Kaffee, Extras.
+"""Kleine Vorschaubilder für die Speisekarte: Smoothies, Matcha-Drinks, Kaffee, Extras.
+(Die Açaí-Motive sind echte Becherfotos aus tools/photo/; Bowls werden nicht mehr gerendert.)
 Ausgabe: _work/out/karte/<name>.png (quadratisch, transparent)."""
 import sys, os, math, random
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -203,7 +204,7 @@ def item(name):
         return
 
 
-ITEMS = ['bowl-classic', 'bowl-tropical', 'bowl-protein', 'smoothie-green', 'smoothie-pink', 'smoothie-mango',
+ITEMS = ['smoothie-green', 'smoothie-pink', 'smoothie-mango',
          'drink-iced-matcha', 'drink-matcha-latte', 'drink-chai', 'coffee-espresso', 'coffee-cappuccino',
          'coffee-flatwhite', 'coffee-iced-latte', 'extra-granola', 'extra-peanut', 'extra-coconut', 'extra-fruit']
 

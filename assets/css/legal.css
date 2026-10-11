@@ -8,3 +8,6 @@
 .legal__main p { color: var(--ink-soft); }
 .legal__placeholder { padding: 1rem 1.2rem; border-radius: 14px; background: var(--berry); color: var(--berry-ink) !important; font-weight: 600; font-size: .92rem; }
 html:not(.content-ready) .legal__main { visibility: visible; }
+.legal__main p + p { margin-top: .7rem; }
+.legal__main ul { margin-top: .6rem; padding-left: 1.2rem; list-style: disc; color: var(--ink-soft); }
+.legal__main li + li { margin-top: .3rem; }

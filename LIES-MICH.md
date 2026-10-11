@@ -35,14 +35,13 @@ Jede Zeile hat links einen **Namen** und rechts den **Inhalt**:
 | `cafe` | Name, Adresse, Instagram, Google-Sterne und Anzahl der Bewertungen, Links |
 | `seo` | Titel und Beschreibung für Google |
 | `navigation` | Menüpunkte oben, Text „Heute geöffnet bis …“ |
-| `hero` | Große Überschrift ganz oben („Gutes Karma.“), Satz darunter, Text im runden Siegel |
-| `signature` | Die vier großen Becher-Szenen: Name, Untertitel, Beschreibung, Zutaten, Preis |
-| `matcha` | Die Matcha-Szene mit den drei Schichten |
-| `impressionen` | Die Fotos aus dem Café |
+| `hero` | Goldener Schriftzug ganz oben („Karma“ / „Specialty Coffee“), Satz und Knopf darunter, Bildbeschreibungen der vier Becher |
+| `highlights` | Die zwei Highlights vor der Karte (Açaí auf Lila, Matcha auf Grün): Name, Untertitel, Beschreibung, Zutaten, Größe, Beispielpreis |
+| `impressionen` | Die Stimmungsbilder (derzeit gemeinfreie Fotos, nicht aus dem Café; gern durch eigene ersetzen) |
 | `speisekarte` | Kategorien und Einträge der Karte (Name, Beschreibung, Preis, Bild) |
 | `oeffnungszeiten` | Tage und Uhrzeiten |
 | `besuch`, `footer` | Texte unten, Links zu Impressum und Datenschutz |
-| `bildkennzeichnung` | Hinweis „3D-Visualisierung“ an den Becherbildern und im Footer |
+| `bildkennzeichnung` | Hinweis „Symbolbild“ unter den Bechern und Bildhinweis im Footer |
 
 ---
 
@@ -61,8 +60,10 @@ Jede Zeile hat links einen **Namen** und rechts den **Inhalt**:
 ## 4. Häufige Änderungen
 
 ### Einen Preis ändern
-Mit Strg+F (Mac: Cmd+F) nach dem Namen suchen, z. B. `Berry Blast`. Ein paar Zeilen darunter steht `"preis": "8,40 €",`. Nur die Zahl ändern.
-Achtung: Die Becher stehen zweimal in der Datei, einmal bei `signature` (große Szene) und einmal bei `speisekarte` (Karte).
+Mit Strg+F (Mac: Cmd+F) nach dem Namen suchen, z. B. `Berry Blast`. In derselben Zeile steht `"preis": "8,40 €"`. Nur die Zahl ändern.
+Achtung: Die zwei Highlights (`Karma Signature`, `Iced Strawberry Matcha`) stehen zweimal in der Datei, einmal bei `highlights`
+(großer farbiger Abschnitt) und einmal bei `speisekarte` (Karte). Bitte beide Preise ändern. Bei den Highlights steht neben dem
+Preis „Beispielpreis“; das Wort steht bei `highlights` → `preis_hinweis` und kann gelöscht werden (`""`), sobald die Preise stimmen.
 
 ### Öffnungszeiten ändern
 Im Bereich `oeffnungszeiten` steht für jeden Tag z. B.:
@@ -97,12 +98,15 @@ Ohne Bild: `"bild": ""`.
 Die `beschreibung` lesen Blinde und Google, bitte kurz beschreiben, was zu sehen ist.
 Die Galerie ordnet beliebig viele Fotos automatisch im versetzten Raster an.
 
-### Echte Produktfotos statt 3D-Visualisierung
-Die großen Becher sind 3D-Visualisierungen mit aufwendigen Animationen (Drehung, Füllen, Explosion).
-Diese Animationen brauchen speziell vorbereitete Bilder. Ein echtes Foto kann aber jederzeit das **Endbild** ersetzen:
-Foto freistellen (transparenter Hintergrund, Becher von der Seite wie bisher, 1100 × 1500 Pixel) und als
-`assets/render/<sorte>/final.webp` und `final-m.webp` (600 Pixel breit) speichern. Danach in `content.json` bei
-`bildkennzeichnung` den Hinweis anpassen.
+### Die großen Becherbilder
+Die vier Becher oben und bei den Highlights stammen aus dem Bild, das Sie bereitgestellt haben (Iced Strawberry Matcha,
+zwei Açaí-Becher, Erdbeer-Smoothie). Sie sind freigestellt und liegen einzeln in `assets/hero/`
+(`cup-matcha.webp`, `cup-mango.webp`, `cup-karma.webp`, `cup-pink.webp`). Sie sind als „Symbolbild“ gekennzeichnet.
+
+Ein Becher lässt sich tauschen, indem man eine Datei mit **gleichem Namen** und durchsichtigem Hintergrund
+(WebP oder PNG, etwa 380 × 650 Pixel, Becher unten bündig) hochlädt. Bei einem anderen Seitenverhältnis bitte in
+`index.html` die Angaben `width`/`height` des Bildes anpassen. Die Aufbereitung aus einem neuen Gesamtbild beschreibt die
+README (Ordner `tools/hero/`).
 
 ---
 

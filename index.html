@@ -18,11 +18,9 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
 <link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/bodoni-moda-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="content.json" as="fetch" type="application/json" crossorigin>
-<link rel="preload" href="assets/render/manifest.json" as="fetch" type="application/json" crossorigin>
-<link rel="preload" as="image" imagesrcset="assets/render/classic/final-m.webp 600w, assets/render/classic/final.webp 1100w" imagesizes="(max-width: 767px) 40vh, 58vh" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero/cup-karma.webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,19 +33,19 @@
   "sameAs": ["https://www.instagram.com/yourkarmacoffee/"]
 }
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 <script>
   /* Bewegung nur, wenn der Besucher sie nicht im System abgeschaltet hat */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ok');
 </script>
 <!-- Erst die Inhalte, dann die Animationen. Alles liegt lokal, es gibt keine externen Verbindungen. -->
-<script src="assets/js/content-fallback.js?v=3" defer></script>
-<script src="assets/js/content.js?v=3" defer></script>
+<script src="assets/js/content-fallback.js?v=7" defer></script>
+<script src="assets/js/content.js?v=7" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/SplitText.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="assets/js/motion.js?v=3" defer></script>
+<script src="assets/js/motion.js?v=7" defer></script>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false">
@@ -64,23 +62,6 @@
 
 <a class="skip" href="#inhalt" data-c="bedienhilfen.zum_inhalt_springen"></a>
 
-<!-- Ladebildschirm: lädt Schriften und die ersten Bilder vor, damit nichts nachploppt -->
-<div class="loader" data-loader aria-hidden="true">
-  <svg class="loader__mark" viewBox="-4 4 308 118"><use href="#wordmark"/></svg>
-  <span class="loader__count" data-loader-count>0</span>
-</div>
-
-<!-- Durchgehende Farbfläche: wird beim Scrollen von Sorte zu Sorte überblendet -->
-<div class="tints" aria-hidden="true">
-  <i class="tint tint--acai" data-tint="acai"></i>
-  <i class="tint tint--mango" data-tint="mango"></i>
-  <i class="tint tint--peanut" data-tint="peanut"></i>
-  <i class="tint tint--berry" data-tint="berry"></i>
-  <i class="tint tint--strawberry" data-tint="strawberry"></i>
-  <i class="tint tint--matcha" data-tint="matcha"></i>
-  <i class="tint tint--cream" data-tint="cream"></i>
-</div>
-
 <div class="progress" aria-hidden="true"><span></span></div>
 
 <header class="nav" data-nav>
@@ -88,157 +69,103 @@
     <svg class="nav__mark" viewBox="-4 4 308 118" aria-hidden="true"><use href="#wordmark"/></svg>
   </a>
   <nav class="nav__links" data-attr="aria-label=bedienhilfen.hauptnavigation">
-    <a class="nav__link" href="#sorten" data-c="navigation.sorten"></a>
+    <a class="nav__link" href="#acai" data-c="navigation.acai"></a>
     <a class="nav__link" href="#matcha" data-c="navigation.matcha"></a>
     <a class="nav__link" href="#karte" data-c="navigation.karte"></a>
     <a class="nav__link" href="#besuch" data-c="navigation.besuch"></a>
   </nav>
-  <a class="nav__status" href="#besuch" data-status><i class="dot" aria-hidden="true"></i><span data-status-text></span></a>
+  <a class="nav__status" href="#besuch" data-status><i class="dot" aria-hidden="true"></i><span data-status-text>Täglich 9–19 Uhr</span></a>
 </header>
 
 <main id="inhalt">
 
-  <!-- 1 · Hero + Classic: eine gemeinsame, gepinnte Szene. Derselbe Becher wird vom Hero-Objekt zum Classic-Becher. -->
-  <div class="opener" id="top" data-opener>
-    <div class="opener__pin" data-pin>
+  <!-- 1 · Hero: Name des Cafés in goldener 3D-Schrift, darunter die vier Becher -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <h1 class="hero__title" id="hero-title" data-attr="aria-label=cafe.name" aria-label="Karma Specialty Coffee">
+      <span class="gold gold--xl" data-hero-line aria-hidden="true" data-c="hero.titel_zeile_1">Karma</span>
+      <span class="gold gold--sm" data-hero-line aria-hidden="true" data-c="hero.titel_zeile_2">Specialty Coffee</span>
+    </h1>
+    <figure class="hero__cups" data-hero-cups>
+      <img class="hero__cup hero__cup--matcha" src="assets/hero/cup-matcha.webp" width="367" height="658" alt="" data-attr="alt=hero.becher.0" decoding="async" fetchpriority="high">
+      <img class="hero__cup hero__cup--mango" src="assets/hero/cup-mango.webp" width="383" height="651" alt="" data-attr="alt=hero.becher.1" decoding="async" fetchpriority="high">
+      <img class="hero__cup hero__cup--karma" src="assets/hero/cup-karma.webp" width="378" height="646" alt="" data-attr="alt=hero.becher.2" decoding="async" fetchpriority="high">
+      <img class="hero__cup hero__cup--pink" src="assets/hero/cup-pink.webp" width="384" height="743" alt="" data-attr="alt=hero.becher.3" decoding="async" fetchpriority="high">
+      <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text">Symbolbild</figcaption>
+    </figure>
+    <div class="hero__foot" data-hero-foot>
+      <p class="hero__claim" data-c="hero.claim">Açaí, Matcha &amp; Specialty Coffee mitten in Langen.</p>
+      <a class="btn hero__btn" href="#karte">
+        <span data-c="hero.karte_button">Zur Karte</span>
+        <span class="btn__icon" aria-hidden="true"><svg class="ico"><use href="#i-arrow-down"/></svg></span>
+      </a>
+      <a class="hero__rating" data-google target="_blank" rel="noopener">
+        <span class="stars" aria-hidden="true"></span>
+        <strong data-c="cafe.google_sterne">4,4</strong>
+        <span><span data-c="cafe.google_anzahl_bewertungen">103</span> <span data-c="hero.bewertung_text">Google-Bewertungen</span></span>
+      </a>
+    </div>
+  </section>
 
-      <section class="hero" aria-labelledby="hero-title">
-        <h1 class="hero__title" id="hero-title">
-          <span class="hero__word hero__word--1" data-c="hero.zeile_1"></span>
-          <em class="hero__word hero__word--2" data-c="hero.zeile_2"></em>
-        </h1>
-        <div class="hero__meta">
-          <p class="hero__sub" data-c="hero.unterzeile"></p>
-          <p class="hero__claim" data-c="hero.claim"></p>
-        </div>
-        <a class="hero__rating" data-google target="_blank" rel="noopener">
-          <span class="stars" aria-hidden="true"></span>
-          <strong data-c="cafe.google_sterne"></strong>
-          <span><span data-c="cafe.google_anzahl_bewertungen"></span> <span data-c="hero.bewertung_text"></span></span>
-        </a>
-        <div class="hero__cue" aria-hidden="true"><span data-c="hero.scroll_hinweis"></span><i></i></div>
-      </section>
+  <!-- 2 · Highlight Açaí (lila) -->
+  <section class="spot spot--acai" id="acai" aria-labelledby="spot-acai" data-spot>
+    <p class="spot__word" aria-hidden="true" data-spot-word data-c="highlights.eintraege.0.hintergrundwort"></p>
+    <div class="wrap spot__grid">
+      <figure class="spot__media" data-spot-media>
+        <img class="spot__cup" src="assets/hero/cup-karma.webp" width="378" height="646" alt="" data-attr="alt=highlights.eintraege.0.bild_beschreibung" loading="lazy" decoding="async">
+        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+      </figure>
+      <article class="spot__copy" data-spot-copy>
+        <p class="kicker spot__kicker"><span data-c="highlights.titel"></span><span class="spot__count">01 / 02</span></p>
+        <h2 class="spot__name" id="spot-acai" data-rich="highlights.eintraege.0.name" data-rich-italic="highlights.eintraege.0.kursiv"></h2>
+        <p class="spot__sub" data-c="highlights.eintraege.0.untertitel"></p>
+        <p class="spot__text" data-c="highlights.eintraege.0.beschreibung"></p>
+        <p class="spot__label" data-c="highlights.zutaten_titel"></p>
+        <ul class="spot__ingredients" data-list="highlights.eintraege.0.zutaten"></ul>
+        <p class="spot__price">
+          <span class="spot__size"><span data-c="highlights.eintraege.0.groesse"></span> · <span data-c="highlights.preis_hinweis"></span></span>
+          <strong class="gold gold--price" data-c="highlights.eintraege.0.preis"></strong>
+        </p>
+      </article>
+    </div>
+  </section>
 
-      <div class="seal" aria-hidden="true" data-seal>
-        <svg viewBox="0 0 200 200">
-          <defs><path id="seal-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-          <text><textPath href="#seal-circle" data-c="hero.siegel_text" data-seal-text></textPath></text>
-        </svg>
-        <span class="seal__core"><svg viewBox="0 0 256 256"><use href="#i-star"/></svg></span>
+  <!-- 3 · Highlight Matcha (grün) -->
+  <section class="spot spot--matcha" id="matcha" aria-labelledby="spot-matcha" data-spot>
+    <p class="spot__word" aria-hidden="true" data-spot-word data-c="highlights.eintraege.1.hintergrundwort"></p>
+    <div class="wrap spot__grid">
+      <article class="spot__copy" data-spot-copy>
+        <p class="kicker spot__kicker"><span data-c="highlights.titel"></span><span class="spot__count">02 / 02</span></p>
+        <h2 class="spot__name" id="spot-matcha" data-rich="highlights.eintraege.1.name" data-rich-italic="highlights.eintraege.1.kursiv"></h2>
+        <p class="spot__sub" data-c="highlights.eintraege.1.untertitel"></p>
+        <p class="spot__text" data-c="highlights.eintraege.1.beschreibung"></p>
+        <p class="spot__label" data-c="highlights.zutaten_titel"></p>
+        <ul class="spot__ingredients" data-list="highlights.eintraege.1.zutaten"></ul>
+        <p class="spot__price">
+          <span class="spot__size"><span data-c="highlights.eintraege.1.groesse"></span> · <span data-c="highlights.preis_hinweis"></span></span>
+          <strong class="gold gold--price" data-c="highlights.eintraege.1.preis"></strong>
+        </p>
+      </article>
+      <figure class="spot__media" data-spot-media>
+        <img class="spot__cup" src="assets/hero/cup-matcha.webp" width="367" height="658" alt="" data-attr="alt=highlights.eintraege.1.bild_beschreibung" loading="lazy" decoding="async">
+        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4 · Speisekarte (Beispiel), direkt nach den Highlights -->
+  <section class="menu" id="karte" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="menu__head">
+        <h2 class="h2" id="menu-title" data-c="speisekarte.titel" data-reveal></h2>
+        <p class="lead" data-c="speisekarte.einleitung" data-reveal></p>
+        <p class="note" data-c="speisekarte.hinweis" data-reveal></p>
       </div>
-
-      <figure class="stage stage--classic" data-stage="classic">
-        <img class="stage__shadow" src="assets/render/classic/shadow.webp" alt="" width="1100" height="1500" decoding="async">
-        <img class="stage__final" src="assets/render/classic/final.webp" srcset="assets/render/classic/final-m.webp 600w, assets/render/classic/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=hero.bild_beschreibung" alt="" width="1100" height="1500" fetchpriority="high" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
-      </figure>
-
-      <article class="copy copy--classic" id="sorten" aria-labelledby="name-classic" data-copy="classic">
-        <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">01 / 04</span></p>
-        <h2 class="copy__name" id="name-classic" data-rich="signature.sorten.0.name" data-rich-italic="signature.sorten.0.kursiv"></h2>
-        <p class="copy__sub" data-c="signature.sorten.0.untertitel"></p>
-        <p class="copy__text" data-c="signature.sorten.0.beschreibung"></p>
-        <div class="copy__meta">
-          <p class="copy__label" data-c="signature.zutaten_titel"></p>
-          <ol class="copy__ingredients" data-list="signature.sorten.0.zutaten"></ol>
-          <p class="copy__price"><span data-c="signature.groesse"></span><strong data-c="signature.sorten.0.preis"></strong></p>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- 2 · Tropical: Becher füllt sich, Mango und Ananas schweben in Tiefenebenen -->
-  <section class="scene scene--tropical" id="tropical" aria-labelledby="name-tropical" data-scene="tropical">
-    <div class="scene__pin" data-pin>
-      <p class="bigtype bigtype--tropical" aria-hidden="true" data-bigtype><span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span> <span data-c="signature.sorten.1.name"></span></p>
-      <figure class="stage stage--tropical" data-stage="tropical">
-        <img class="stage__shadow" src="assets/render/tropical/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/tropical/final.webp" srcset="assets/render/tropical/final-m.webp 600w, assets/render/tropical/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.1.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
-      </figure>
-      <article class="copy copy--tropical" data-copy="tropical">
-        <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">02 / 04</span></p>
-        <h2 class="copy__name" id="name-tropical" data-rich="signature.sorten.1.name" data-rich-italic="signature.sorten.1.kursiv"></h2>
-        <p class="copy__sub" data-c="signature.sorten.1.untertitel"></p>
-        <p class="copy__text" data-c="signature.sorten.1.beschreibung"></p>
-        <div class="copy__meta">
-          <p class="copy__label" data-c="signature.zutaten_titel"></p>
-          <ol class="copy__ingredients" data-list="signature.sorten.1.zutaten"></ol>
-          <p class="copy__price"><span data-c="signature.groesse"></span><strong data-c="signature.sorten.1.preis"></strong></p>
-        </div>
-      </article>
+      <nav class="menu__tabs" aria-label="Kategorien" data-menu-tabs></nav>
+      <div class="menu__grid" data-menu></div>
     </div>
   </section>
 
-  <!-- 3 · Peanut Power: Erdnussbutter läuft am Becher herunter, der Becher kippt sanft -->
-  <section class="scene scene--peanut" id="peanut" aria-labelledby="name-peanut" data-scene="peanut">
-    <div class="scene__pin" data-pin>
-      <p class="bigtype bigtype--peanut-a" aria-hidden="true" data-bigtype-a>Peanut Peanut Peanut</p>
-      <p class="bigtype bigtype--peanut-b" aria-hidden="true" data-bigtype-b>Power Power Power</p>
-      <figure class="stage stage--peanut" data-stage="peanut">
-        <img class="stage__shadow" src="assets/render/peanut/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/peanut/final.webp" srcset="assets/render/peanut/final-m.webp 600w, assets/render/peanut/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.2.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
-      </figure>
-      <article class="copy copy--peanut" data-copy="peanut">
-        <div class="copy__col copy__col--a">
-          <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">03 / 04</span></p>
-          <h2 class="copy__name" id="name-peanut" data-rich="signature.sorten.2.name" data-rich-italic="signature.sorten.2.kursiv"></h2>
-          <p class="copy__sub" data-c="signature.sorten.2.untertitel"></p>
-        </div>
-        <div class="copy__col copy__col--b">
-          <p class="copy__text" data-c="signature.sorten.2.beschreibung"></p>
-          <div class="copy__meta">
-            <p class="copy__label" data-c="signature.zutaten_titel"></p>
-            <ol class="copy__ingredients" data-list="signature.sorten.2.zutaten"></ol>
-            <p class="copy__price"><span data-c="signature.groesse"></span><strong data-c="signature.sorten.2.preis"></strong></p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- 4 · Berry Blast: Beeren explodieren nach außen und ziehen sich wieder zusammen -->
-  <section class="scene scene--berry" id="berry" aria-labelledby="name-berry" data-scene="berry">
-    <div class="scene__pin" data-pin>
-      <figure class="stage stage--berry" data-stage="berry">
-        <img class="stage__shadow" src="assets/render/berry/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/berry/final.webp" srcset="assets/render/berry/final-m.webp 600w, assets/render/berry/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=signature.sorten.3.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
-      </figure>
-      <article class="copy copy--berry" data-copy="berry">
-        <p class="copy__kicker"><span data-c="signature.titel"></span><span class="copy__count">04 / 04</span></p>
-        <h2 class="copy__name" id="name-berry" data-rich="signature.sorten.3.name" data-rich-italic="signature.sorten.3.kursiv"></h2>
-        <p class="copy__sub" data-c="signature.sorten.3.untertitel"></p>
-        <p class="copy__text" data-c="signature.sorten.3.beschreibung"></p>
-        <div class="copy__meta">
-          <p class="copy__label" data-c="signature.zutaten_titel"></p>
-          <ol class="copy__ingredients" data-list="signature.sorten.3.zutaten"></ol>
-          <p class="copy__price"><span data-c="signature.groesse"></span><strong data-c="signature.sorten.3.preis"></strong></p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- 5 · Iced Strawberry Matcha: Schichten bauen sich nacheinander auf, Hintergrund läuft von Rot zu Grün -->
-  <section class="scene scene--matcha" id="matcha" aria-labelledby="name-matcha" data-scene="matcha">
-    <div class="scene__pin" data-pin>
-      <figure class="stage stage--matcha" data-stage="matcha">
-        <img class="stage__shadow" src="assets/render/matcha/shadow.webp" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <img class="stage__final" src="assets/render/matcha/final.webp" srcset="assets/render/matcha/final-m.webp 600w, assets/render/matcha/final.webp 1100w" sizes="(max-width: 767px) 40vh, 58vh" data-attr="alt=matcha.bild_beschreibung" alt="" width="1100" height="1500" loading="lazy" decoding="async">
-        <figcaption class="render-badge" data-c="bildkennzeichnung.bild_text"></figcaption>
-      </figure>
-      <article class="copy copy--matcha" data-copy="matcha">
-        <p class="copy__kicker" data-c="matcha.kicker"></p>
-        <h2 class="copy__name copy__name--matcha" id="name-matcha" data-rich="matcha.titel" data-rich-italic="matcha.kursiv"></h2>
-        <p class="copy__text" data-c="matcha.beschreibung"></p>
-        <p class="copy__price"><span data-c="signature.groesse"></span><strong data-c="matcha.preis"></strong></p>
-      </article>
-      <ol class="layers" data-layers aria-label="Schichten"></ol>
-    </div>
-  </section>
-
-  <!-- 6 · Impressionen: echte Fotos aus dem Café (vom Café bereitgestellt) -->
+  <!-- 5 · Impressionen: gemeinfreie Stimmungsbilder (CC0, Nachweis in BILDQUELLEN.md) -->
   <section class="gallery" id="impressionen" aria-labelledby="gallery-title" data-gallery>
     <div class="wrap gallery__head">
       <h2 class="h2" id="gallery-title" data-c="impressionen.titel" data-reveal></h2>
@@ -252,20 +179,7 @@
     <ul class="wrap gallery__grid" data-gallery-grid data-attr="aria-label=bedienhilfen.galerie_label"></ul>
   </section>
 
-  <!-- 7 · Speisekarte (Beispiel) -->
-  <section class="menu" id="karte" aria-labelledby="menu-title">
-    <div class="wrap">
-      <div class="menu__head">
-        <h2 class="h2" id="menu-title" data-c="speisekarte.titel" data-reveal></h2>
-        <p class="lead" data-c="speisekarte.einleitung" data-reveal></p>
-        <p class="note" data-c="speisekarte.hinweis" data-reveal></p>
-      </div>
-      <nav class="menu__tabs" aria-label="Kategorien" data-menu-tabs></nav>
-      <div class="menu__grid" data-menu></div>
-    </div>
-  </section>
-
-  <!-- 8 · Besuch uns -->
+  <!-- 6 · Besuch uns -->
   <section class="visit" id="besuch" aria-labelledby="visit-title">
     <div class="wrap visit__grid">
       <div class="visit__main">
